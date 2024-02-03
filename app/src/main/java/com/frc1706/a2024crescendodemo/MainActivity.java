@@ -289,16 +289,17 @@ public class MainActivity extends AppCompatActivity {
                     trapMinus.setBackgroundColor(Color.argb(127, 255, 215, 0));
                     trapPlus.setBackgroundColor(Color.argb(127, 255, 215, 0));
                     submit.setBackgroundColor(Color.argb(127, 255, 215, 0));
-                    autoTele.setBackgroundColor(Color.argb(127, 255, 215, 0));
+                }
 
-                } else {
-                    ampMinus.setBackgroundColor(Color.argb(100, 156, 39, 176));
-                    ampPlus.setBackgroundColor(Color.argb(100, 156, 39, 176));
-                    speakerPlus.setBackgroundColor(Color.argb(100, 156, 39, 176));
-                    trapMinus.setBackgroundColor(Color.argb(100, 156, 39, 176));
-                    trapPlus.setBackgroundColor(Color.argb(100, 156, 39, 176));
-                    submit.setBackgroundColor(Color.argb(100, 156, 39, 176));
-                    autoTele.setBackgroundColor(Color.argb(100, 156, 39, 176));
+                if (!team.equals("9401")) {
+                    ampMinus.setBackgroundColor(Color.argb(255, 156, 39, 176));
+                    ampPlus.setBackgroundColor(Color.argb(255, 156, 39, 176));
+                    speakerPlus.setBackgroundColor(Color.argb(255, 156, 39, 176));
+                    speakerMinus.setBackgroundColor(Color.argb(255, 156, 39, 176));
+                    trapMinus.setBackgroundColor(Color.argb(255, 156, 39, 176));
+                    trapPlus.setBackgroundColor(Color.argb(255, 156, 39, 176));
+                    submit.setBackgroundColor(Color.argb(255, 156, 39, 176));
+                    autoTele.setBackgroundColor(Color.argb(255, 156, 39, 176));
                 }
             }
         });
