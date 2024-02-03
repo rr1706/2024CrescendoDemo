@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="TabletNumSpinner">
+        <item>red 1</item>
+        <item>red 2</item>
+        <item>red 3</item>
+        <item>blue 1</item>
+        <item>blue 2</item>
+        <item>blue 3</item>
+    </string-array>
+</resources>
