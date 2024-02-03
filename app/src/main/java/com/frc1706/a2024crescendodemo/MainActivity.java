@@ -291,6 +291,14 @@ public class MainActivity extends AppCompatActivity {
                     submit.setBackgroundColor(Color.argb(127, 255, 215, 0));
                     autoTele.setBackgroundColor(Color.argb(127, 255, 215, 0));
 
+                } else {
+                    ampMinus.setBackgroundColor(Color.argb(100, 156, 39, 176));
+                    ampPlus.setBackgroundColor(Color.argb(100, 156, 39, 176));
+                    speakerPlus.setBackgroundColor(Color.argb(100, 156, 39, 176));
+                    trapMinus.setBackgroundColor(Color.argb(100, 156, 39, 176));
+                    trapPlus.setBackgroundColor(Color.argb(100, 156, 39, 176));
+                    submit.setBackgroundColor(Color.argb(100, 156, 39, 176));
+                    autoTele.setBackgroundColor(Color.argb(100, 156, 39, 176));
                 }
             }
         });
@@ -467,7 +475,7 @@ public class MainActivity extends AppCompatActivity {
 
         //TELEOP
         speakerPlus.setOnClickListener(v -> {
-            if (autoTele.getText() == "Teleop") {
+            if (autoTele.getText() == "Teleop" && teleSpeaker <= 40) {
                 teleSpeaker += 1;
                 speakerTxt.setText("(Teleop) speaker: " + Integer.toString(teleSpeaker));
             } else {
@@ -507,7 +515,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         ampPlus.setOnClickListener(v -> {
-            if (autoTele.getText() == "Teleop") {
+            if (autoTele.getText() == "Teleop" && teleAmp <= 40) {
                 teleAmp += 1;
                 ampTxt.setText("(Teleop) amp: " + Integer.toString(teleAmp));
             } else {
