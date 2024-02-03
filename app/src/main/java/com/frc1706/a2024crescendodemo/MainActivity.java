@@ -48,9 +48,6 @@ import java.text.SimpleDateFormat;
 // Up to date tablets
 // Red 3
 
-//commnet
-
-
 public class MainActivity extends AppCompatActivity {
     Spinner endGame, selectedTabNum;
     Button update, imageGrabber, backPre, speakerPlus, speakerMinus, ampPlus, ampMinus, trapPlus, trapMinus, submit, notesSubmit, noShow, redAlliance, blueAlliance, continueBtn, grayBox, autoTele, sameScouter, backbtn, testBtn;
