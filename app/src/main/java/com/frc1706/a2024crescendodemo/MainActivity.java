@@ -46,13 +46,14 @@ import java.util.Objects;
 import java.text.SimpleDateFormat;
 
 // Up to date tablets
-// Red 3
+//
+// blue 3
 
 public class MainActivity extends AppCompatActivity {
     Spinner endGame, selectedTabNum;
     Button update, imageGrabber, backPre, speakerPlus, speakerMinus, ampPlus, ampMinus, trapPlus, trapMinus, submit, notesSubmit, noShow, redAlliance, blueAlliance, continueBtn, grayBox, autoTele, sameScouter, backbtn, testBtn;
     Switch defense, robotError;
-    TextView ampTxt, speakerTxt, trapTxt, allianceTxt, infoDisplay, endgameTxt, roboTxt;
+    TextView ampTxt, speakerTxt, trapTxt, allianceTxt, infoDisplay, endgameTxt, roboTxt, roberTxt, defenTxt;
     EditText nameInput, matchNumber, teamNumber, notes;
     CheckBox autofillTeam;
     ImageView rrLogo, spike;
@@ -125,6 +126,8 @@ public class MainActivity extends AppCompatActivity {
         spike = findViewById(R.id.spike);
         selectedTabNum = findViewById(R.id.TabletNumborFoRealNoCapNoCapNoCap);
         update = findViewById(R.id.updateBtn);
+        roberTxt = findViewById(R.id.roboerrorTxt);
+        defenTxt = findViewById(R.id.defenceTxt);
 
         Animation rotate = AnimationUtils.loadAnimation(this, R.anim.rotate_picture);
 
@@ -196,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
                     spike.setImageBitmap(imgBitmap);
                 }else{
                     spike.setImageDrawable(getResources().getDrawable(getResources().getIdentifier("placeholder", "drawable", getPackageName())));
-                    Toast.makeText(getApplicationContext(), "No Robot Image Found.  Check Team Number or Field or Talk with Scouting Lead", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "No Robot Image Found.  Check Team Number or Talk with the Scouting Lead", Toast.LENGTH_LONG).show();
                 }
             } else {
                 spike.setVisibility(View.INVISIBLE);
@@ -269,6 +272,8 @@ public class MainActivity extends AppCompatActivity {
                 speakerTxt.setText("(Auto) speaker: " + Integer.toString(autoSpeaker));
                 team = teamNumber.getText().toString();
                 robotError.setVisibility(View.INVISIBLE);
+                roberTxt.setVisibility(View.INVISIBLE);
+                defenTxt.setVisibility(View.INVISIBLE);
 
 
                 if (alliance == "blue") {
@@ -355,6 +360,7 @@ public class MainActivity extends AppCompatActivity {
             matchNumber.setVisibility(View.VISIBLE);
             nameInput.setVisibility(View.VISIBLE);
             teamNumber.setVisibility(View.VISIBLE);
+            grayBox.setVisibility(View.VISIBLE);
         });
 
         noShow.setOnClickListener(v -> {
@@ -458,6 +464,8 @@ public class MainActivity extends AppCompatActivity {
                 speakerTxt.setText("(Auto) speaker: " + Integer.toString(autoSpeaker));
                 robotError.setVisibility(View.INVISIBLE);
                 roboTxt.setVisibility(View.INVISIBLE);
+                roberTxt.setVisibility(View.INVISIBLE);
+                defenTxt.setVisibility(View.INVISIBLE);
             } else {
                 autoTele.setText("Teleop");
                 trapMinus.setVisibility(View.VISIBLE);
@@ -470,6 +478,8 @@ public class MainActivity extends AppCompatActivity {
                 robotError.setVisibility(View.VISIBLE);
                 ampTxt.setText("(Teleop) amp: " + Integer.toString(teleAmp));
                 speakerTxt.setText("(Teleop) speaker: " + Integer.toString(teleSpeaker));
+                roberTxt.setVisibility(View.VISIBLE);
+                defenTxt.setVisibility(View.VISIBLE);
 
             }
         });

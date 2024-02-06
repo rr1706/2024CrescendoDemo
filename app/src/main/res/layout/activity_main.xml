@@ -105,13 +105,15 @@
         android:layout_width="169dp"
         android:layout_height="101dp"
         android:fontFamily="@font/astronomus"
-        android:text="Defense?"
+        android:switchTextAppearance="@style/SpinnerTheme"
+        android:theme="@style/SpinnerTheme"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.941"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.597" />
+        app:layout_constraintVertical_bias="0.597"
+        tools:fontFamily="@font/astronomus" />
 
     <Spinner
         android:id="@+id/endGame"
@@ -120,6 +122,7 @@
         android:background="#002196F3"
         android:entries="@array/endgame"
         android:spinnerMode="dropdown"
+        android:theme="@style/SpinnerTheme"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.042"
@@ -141,7 +144,8 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.852" />
+        app:layout_constraintVertical_bias="0.852"
+        tools:fontFamily="@font/astronomus" />
 
     <Button
         android:id="@+id/trapPlus"
@@ -222,7 +226,8 @@
         android:layout_width="164dp"
         android:layout_height="94dp"
         android:fontFamily="@font/astronomus"
-        android:text="Robot Error?"
+        android:switchTextAppearance="@style/SpinnerTheme"
+        android:theme="@style/SpinnerTheme"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.942"
@@ -300,6 +305,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.982" />
+
+    <TextView
+        android:id="@+id/defenceTxt"
+        android:layout_width="135dp"
+        android:layout_height="39dp"
+        android:fontFamily="@font/astronomus"
+        android:gravity="center_vertical"
+        android:text="Defense?"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.883"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.592" />
+
+    <TextView
+        android:id="@+id/roboerrorTxt"
+        android:layout_width="133dp"
+        android:layout_height="21dp"
+        android:fontFamily="@font/astronomus"
+        android:gravity="center_vertical"
+        android:text="Robot Error?"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.715" />
 
     <Button
         android:id="@+id/the_return_of_gray_box"
@@ -600,6 +633,7 @@
             android:layout_width="195dp"
             android:layout_height="46dp"
             android:entries="@array/TabletNumSpinner"
+            android:theme="@style/SpinnerTheme"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
