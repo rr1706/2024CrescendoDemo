@@ -3,14 +3,12 @@ package com.frc1706.a2024crescendodemo;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
@@ -36,14 +34,10 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
-
-
-import java.text.SimpleDateFormat;
+import java.util.Random;
 
 // Up to date tablets
 //
@@ -130,6 +124,8 @@ public class MainActivity extends AppCompatActivity {
         defenTxt = findViewById(R.id.defenceTxt);
 
         Animation rotate = AnimationUtils.loadAnimation(this, R.anim.rotate_picture);
+        Animation flip = AnimationUtils.loadAnimation(this, R.anim.flip);
+        Animation fall = AnimationUtils.loadAnimation(this, R.anim.fall);
 
         tabletName = Settings.Secure.getString(getContentResolver(), "bluetooth_name");
 
@@ -186,11 +182,10 @@ public class MainActivity extends AppCompatActivity {
 
         teamAuto();
 
-
         imageGrabber.setOnClickListener(v->{
             if (spike.getVisibility() == View.INVISIBLE) {
                 spike.setVisibility(View.VISIBLE);
-                String teamNumber = team.toString();
+                String teamNumber = team;
 
                 File directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
                 File image = new File(directory + "/RobotPictures/" + teamNumber + ".jpg");
@@ -207,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         autofillTeam.setOnClickListener(v->{
-            if (autofillTeam.isChecked() == true) {
+            if (autofillTeam.isChecked()) {
                 teamAuto();
             }
         });
@@ -257,7 +252,7 @@ public class MainActivity extends AppCompatActivity {
                 grayBox.setVisibility(View.INVISIBLE);
                 teamNumber.setVisibility(View.INVISIBLE);
                 nameInput.setVisibility(View.INVISIBLE);
-                infoDisplay.setText("Name: " + nameInput.getText() + ", Team #: " + teamNumber.getText() + ", Match #: " + matchNumber.getText());
+                infoDisplay.setText("Name: " + nameInput.getText() + ", Team #: " + teamNumber.getText()+ ", Match #: " + matchNumber.getText());
                 autoTele.setText("Auto");
                 autoTele.setText("Auto");
                 trapMinus.setVisibility(View.INVISIBLE);
@@ -267,16 +262,16 @@ public class MainActivity extends AppCompatActivity {
                 defense.setVisibility(View.INVISIBLE);
                 submit.setVisibility(View.INVISIBLE);
                 endgameTxt.setVisibility(View.INVISIBLE);
-                ampTxt.setText("(Auto) amp: " + Integer.toString(autoAmp));
-                trapTxt.setText("trap: " + Integer.toString(teleTrap));
-                speakerTxt.setText("(Auto) speaker: " + Integer.toString(autoSpeaker));
+                ampTxt.setText("(Auto) amp: " + autoAmp);
+                trapTxt.setText("trap: " + teleTrap);
+                speakerTxt.setText("(Auto) speaker: " + autoSpeaker);
                 team = teamNumber.getText().toString();
                 robotError.setVisibility(View.INVISIBLE);
                 roberTxt.setVisibility(View.INVISIBLE);
                 defenTxt.setVisibility(View.INVISIBLE);
 
 
-                if (alliance == "blue") {
+                if (alliance.equals("blue")) {
                     endGame.setBackgroundColor(Color.argb(0, 127, 127, 247));
                 } else {
                     endGame.setBackgroundColor(Color.argb(0, 247, 127, 127));
@@ -296,7 +291,29 @@ public class MainActivity extends AppCompatActivity {
                     submit.setBackgroundColor(Color.argb(127, 255, 215, 0));
                 }
 
-                if (!team.equals("9401")) {
+
+                if (nameInput.getText().toString().equalsIgnoreCase("paximus prime")) {
+                    background.startAnimation(flip);
+                }
+                if (matchNumber.getText().toString().equals("69")) {
+                    //nice
+                    Toast.makeText(this, "nice", Toast.LENGTH_SHORT).show();
+                }
+                if (nameInput.getText().toString().equalsIgnoreCase("cooper fleming")) {
+                    background.startAnimation(fall);
+                }
+                int random = new Random().nextInt(101);
+                if (nameInput.getText().toString().equalsIgnoreCase("rainbow")) {
+                    ampMinus.setBackgroundColor(Color.argb(new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256)));
+                    ampPlus.setBackgroundColor(Color.argb(new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256)));
+                    speakerPlus.setBackgroundColor(Color.argb(new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256)));
+                    speakerMinus.setBackgroundColor(Color.argb(new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256)));
+                    trapMinus.setBackgroundColor(Color.argb(new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256)));
+                    trapPlus.setBackgroundColor(Color.argb(new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256)));
+                    submit.setBackgroundColor(Color.argb(new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256)));
+                    autoTele.setBackgroundColor(Color.argb(new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256)));
+                }
+                if (!nameInput.getText().toString().equalsIgnoreCase("rainbow") && !team.equals("9401")) {
                     ampMinus.setBackgroundColor(Color.argb(255, 156, 39, 176));
                     ampPlus.setBackgroundColor(Color.argb(255, 156, 39, 176));
                     speakerPlus.setBackgroundColor(Color.argb(255, 156, 39, 176));
@@ -426,6 +443,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         testBtn.setOnClickListener(v -> {
             timesPressed += 1;
             if (timesPressed == 5) {
@@ -434,6 +452,7 @@ public class MainActivity extends AppCompatActivity {
                 rrLogo.startAnimation(rotate);
                 timesPressed = 0;
                 testBtn.setVisibility(View.VISIBLE);
+
             }
         });
 
@@ -460,8 +479,8 @@ public class MainActivity extends AppCompatActivity {
                 submit.setVisibility(View.INVISIBLE);
                 endGame.setVisibility(View.INVISIBLE);
                 endgameTxt.setVisibility(View.INVISIBLE);
-                ampTxt.setText("(Auto) amp: " + Integer.toString(autoAmp));
-                speakerTxt.setText("(Auto) speaker: " + Integer.toString(autoSpeaker));
+                ampTxt.setText("(Auto) amp: " + autoAmp);
+                speakerTxt.setText("(Auto) speaker: " + autoSpeaker);
                 robotError.setVisibility(View.INVISIBLE);
                 roboTxt.setVisibility(View.INVISIBLE);
                 roberTxt.setVisibility(View.INVISIBLE);
@@ -476,8 +495,8 @@ public class MainActivity extends AppCompatActivity {
                 submit.setVisibility(View.VISIBLE);
                 endgameTxt.setVisibility(View.VISIBLE);
                 robotError.setVisibility(View.VISIBLE);
-                ampTxt.setText("(Teleop) amp: " + Integer.toString(teleAmp));
-                speakerTxt.setText("(Teleop) speaker: " + Integer.toString(teleSpeaker));
+                ampTxt.setText("(Teleop) amp: " + teleAmp);
+                speakerTxt.setText("(Teleop) speaker: " + teleSpeaker);
                 roberTxt.setVisibility(View.VISIBLE);
                 defenTxt.setVisibility(View.VISIBLE);
 
@@ -488,10 +507,10 @@ public class MainActivity extends AppCompatActivity {
         speakerPlus.setOnClickListener(v -> {
             if (autoTele.getText() == "Teleop" && teleSpeaker <= 40) {
                 teleSpeaker += 1;
-                speakerTxt.setText("(Teleop) speaker: " + Integer.toString(teleSpeaker));
+                speakerTxt.setText("(Teleop) speaker: " + teleSpeaker);
             } else {
                 autoSpeaker += 1;
-                speakerTxt.setText("(Auto) speaker: " + Integer.toString(autoSpeaker));
+                speakerTxt.setText("(Auto) speaker: " + autoSpeaker);
                 if (autoSpeaker >= 9) {
                     builder.setMessage("Are you supposed to be in auto, that's a lot of points?")
                             .setPositiveButton("Yes", areyousureurinautospeaker)
@@ -511,27 +530,27 @@ public class MainActivity extends AppCompatActivity {
 
         speakerMinus.setOnClickListener(v -> {
             if (autoTele.getText() == "Teleop") {
-                    if (teleSpeaker > 0) {
-                        teleSpeaker -= 1;
-                        speakerTxt.setText("(Teleop) speaker: " + Integer.toString(teleSpeaker));
-                    }
-                } else {
-                    if (autoSpeaker > 0) {
-                        autoSpeaker -= 1;
-                        speakerTxt.setText("(Auto) speaker: " + Integer.toString(autoSpeaker));
-                    }
-
+                if (teleSpeaker > 0) {
+                    teleSpeaker -= 1;
+                    speakerTxt.setText("(Teleop) speaker: " + teleSpeaker);
                 }
+            } else {
+                if (autoSpeaker > 0) {
+                    autoSpeaker -= 1;
+                    speakerTxt.setText("(Auto) speaker: " + autoSpeaker);
+                }
+
+            }
 
         });
 
         ampPlus.setOnClickListener(v -> {
             if (autoTele.getText() == "Teleop" && teleAmp <= 40) {
                 teleAmp += 1;
-                ampTxt.setText("(Teleop) amp: " + Integer.toString(teleAmp));
+                ampTxt.setText("(Teleop) amp: " + teleAmp);
             } else {
                 autoAmp += 1;
-                ampTxt.setText("(Auto) amp: " + Integer.toString(autoAmp));
+                ampTxt.setText("(Auto) amp: " + autoAmp);
                 if (autoAmp >= 5) {
                     builder.setMessage("Are you supposed to be in auto, that's a lot of points?")
                             .setPositiveButton("Yes", areyousureurinautoamp)
@@ -551,12 +570,12 @@ public class MainActivity extends AppCompatActivity {
             if (autoTele.getText() == "Teleop") {
                 if (teleAmp > 0) {
                     teleAmp -= 1;
-                    ampTxt.setText("(Teleop) amp: " + Integer.toString(teleAmp));
+                    ampTxt.setText("(Teleop) amp: " + (teleAmp));
                 }
             } else {
                 if (autoAmp > 0) {
                     autoAmp -= 1;
-                    ampTxt.setText("(Auto) amp: " + Integer.toString(autoAmp));
+                    ampTxt.setText("(Auto) amp: " + (autoAmp));
                 }
             }
         });
@@ -565,14 +584,14 @@ public class MainActivity extends AppCompatActivity {
             if (teleTrap < 3) {
                 teleTrap += 1;
             }
-            trapTxt.setText("trap: " + Integer.toString(teleTrap));
+            trapTxt.setText("trap: " + teleTrap);
         });
 
         trapMinus.setOnClickListener(v -> {
             if (teleTrap > 0) {
                 teleTrap -= 1;
             }
-            trapTxt.setText("trap: " + Integer.toString(teleTrap));
+            trapTxt.setText("trap: " + teleTrap);
         });
 
         submit.setOnClickListener(v -> {
@@ -738,23 +757,23 @@ public class MainActivity extends AppCompatActivity {
         return text.toString();
     }
 
-            private void teamAuto() {
-                    if (autofillTeam.isChecked() && !Objects.equals(getTeams(), "") && !matchNumber.getText().toString().equals("")) {
-                        int tabletnumbercomp = tabletnumber - 1;
-                        String[] tempIntArr;
-                        String[] splittempIntArr;
-                        tempIntArr = getTeams().split("\n");
-                        roundfill = Integer.parseInt(matchNumber.getText().toString());
-                        try {
-                            splittempIntArr = tempIntArr[roundfill - 1].split(",");
-                            teamNumber.setText(splittempIntArr[tabletnumbercomp]);
-                            Toast.makeText(this, splittempIntArr[tabletnumbercomp], Toast.LENGTH_SHORT).show();
+    private void teamAuto() {
+        if (autofillTeam.isChecked() && !Objects.equals(getTeams(), "") && !matchNumber.getText().toString().equals("")) {
+            int tabletnumbercomp = tabletnumber - 1;
+            String[] tempIntArr;
+            String[] splittempIntArr;
+            tempIntArr = getTeams().split("\n");
+            roundfill = Integer.parseInt(matchNumber.getText().toString());
+            try {
+                splittempIntArr = tempIntArr[roundfill - 1].split(",");
+                teamNumber.setText(splittempIntArr[tabletnumbercomp]);
+                Toast.makeText(this, splittempIntArr[tabletnumbercomp], Toast.LENGTH_SHORT).show();
 
-                        } catch (ArrayIndexOutOfBoundsException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
+            } catch (ArrayIndexOutOfBoundsException e) {
+                e.printStackTrace();
+            }
+        }
+    }
     private void resetVars() {
         roundfill = Integer.parseInt(matchNumber.getText().toString());
         roundfill++;

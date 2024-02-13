@@ -8,6 +8,23 @@
     tools:context=".MainActivity">
 
     <Button
+        android:id="@+id/ampPlus"
+        style="@style/Widget.Material3.Button"
+        android:layout_width="221dp"
+        android:layout_height="221dp"
+        android:text="+"
+        android:textColor="@color/white"
+        android:textSize="150dp"
+        app:backgroundTint="#9C27B0"
+        app:cornerRadius="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.202" />
+
+    <Button
         android:id="@+id/speakerMinus"
         android:layout_width="221dp"
         android:layout_height="93dp"
@@ -20,7 +37,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.472" />
+        app:layout_constraintVertical_bias="0.508" />
 
     <Button
         android:id="@+id/speakerPlus"
@@ -36,7 +53,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.16" />
+        app:layout_constraintVertical_bias="0.202" />
 
     <Button
         android:id="@+id/ampMinus"
@@ -51,39 +68,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.472" />
-
-    <Button
-        android:id="@+id/ampPlus"
-        style="@style/Widget.Material3.Button"
-        android:layout_width="221dp"
-        android:layout_height="221dp"
-        android:text="+"
-        android:textColor="@color/white"
-        android:textSize="150dp"
-        app:backgroundTint="#9C27B0"
-        app:cornerRadius="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.159" />
-
-    <TextView
-        android:id="@+id/speakerValue"
-        android:layout_width="223dp"
-        android:layout_height="38dp"
-        android:fontFamily="@font/astronomus"
-        android:gravity="center"
-        android:text="speaker: 0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.38"
-        tools:gravity="center" />
+        app:layout_constraintVertical_bias="0.508" />
 
     <TextView
         android:id="@+id/ampValue"
@@ -97,8 +82,37 @@
         app:layout_constraintHorizontal_bias="0.939"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.382"
+        app:layout_constraintVertical_bias="0.416"
         tools:gravity="center" />
+
+    <TextView
+        android:id="@+id/speakerValue"
+        android:layout_width="223dp"
+        android:layout_height="38dp"
+        android:fontFamily="@font/astronomus"
+        android:gravity="center"
+        android:text="speaker: 0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.415"
+        tools:gravity="center" />
+
+    <TextView
+        android:id="@+id/defenceTxt"
+        android:layout_width="135dp"
+        android:layout_height="39dp"
+        android:fontFamily="@font/astronomus"
+        android:gravity="center_vertical"
+        android:text="Defense?"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.883"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.635" />
 
     <Switch
         android:id="@+id/defense"
@@ -112,7 +126,7 @@
         app:layout_constraintHorizontal_bias="0.941"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.597"
+        app:layout_constraintVertical_bias="0.643"
         tools:fontFamily="@font/astronomus" />
 
     <Spinner
@@ -144,37 +158,8 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.852"
+        app:layout_constraintVertical_bias="0.867"
         tools:fontFamily="@font/astronomus" />
-
-    <Button
-        android:id="@+id/trapPlus"
-        android:layout_width="113dp"
-        android:layout_height="113dp"
-        android:text="+"
-        android:textSize="50dp"
-        app:backgroundTint="#9C27B0"
-        app:cornerRadius="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.66" />
-
-    <TextView
-        android:id="@+id/trapScore"
-        android:layout_width="69dp"
-        android:layout_height="53dp"
-        android:fontFamily="@font/astronomus"
-        android:gravity="center"
-        android:text="trap: 0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.209"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.645" />
 
     <Button
         android:id="@+id/trapMinus"
@@ -189,21 +174,50 @@
         app:layout_constraintHorizontal_bias="0.373"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.657" />
+        app:layout_constraintVertical_bias="0.678" />
+
+    <Button
+        android:id="@+id/trapPlus"
+        android:layout_width="113dp"
+        android:layout_height="113dp"
+        android:text="+"
+        android:textSize="50dp"
+        app:backgroundTint="#9C27B0"
+        app:cornerRadius="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.681" />
+
+    <TextView
+        android:id="@+id/trapScore"
+        android:layout_width="69dp"
+        android:layout_height="53dp"
+        android:fontFamily="@font/astronomus"
+        android:gravity="center"
+        android:text="trap: 0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.209"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.664" />
 
     <TextView
         android:id="@+id/InfoDisplay"
-        android:layout_width="296dp"
-        android:layout_height="40dp"
+        android:layout_width="286dp"
+        android:layout_height="41dp"
         android:fontFamily="@font/astronomus"
         android:gravity="center"
         android:text="Name: , Team #: , Match #:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.457"
+        app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.975"
+        app:layout_constraintVertical_bias="0.976"
         tools:gravity="center" />
 
     <Button
@@ -233,7 +247,21 @@
         app:layout_constraintHorizontal_bias="0.942"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.734" />
+        app:layout_constraintVertical_bias="0.762" />
+
+    <TextView
+        android:id="@+id/roboerrorTxt"
+        android:layout_width="133dp"
+        android:layout_height="21dp"
+        android:fontFamily="@font/astronomus"
+        android:gravity="center_vertical"
+        android:text="Robot Error?"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.741" />
 
     <TextView
         android:id="@+id/endgameTxt"
@@ -307,32 +335,38 @@
         app:layout_constraintVertical_bias="0.982" />
 
     <TextView
-        android:id="@+id/defenceTxt"
-        android:layout_width="135dp"
-        android:layout_height="39dp"
+        android:id="@+id/textView"
+        android:layout_width="218dp"
+        android:layout_height="34dp"
         android:fontFamily="@font/astronomus"
-        android:gravity="center_vertical"
-        android:text="Defense?"
+        android:gravity="center"
+        android:text="Speaker"
+        android:textColor="@color/white"
+        android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.883"
+        app:layout_constraintHorizontal_bias="0.002"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.592" />
+        app:layout_constraintVertical_bias="0.2"
+        tools:textColor="@color/white" />
 
     <TextView
-        android:id="@+id/roboerrorTxt"
-        android:layout_width="133dp"
-        android:layout_height="21dp"
+        android:id="@+id/textviewongodiwilldosomebad"
+        android:layout_width="221dp"
+        android:layout_height="36dp"
         android:fontFamily="@font/astronomus"
-        android:gravity="center_vertical"
-        android:text="Robot Error?"
+        android:gravity="center"
+        android:text="amp"
+        android:textColor="@color/white"
+        android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.715" />
+        app:layout_constraintVertical_bias="0.185"
+        tools:textColor="@color/white" />
 
     <Button
         android:id="@+id/the_return_of_gray_box"
