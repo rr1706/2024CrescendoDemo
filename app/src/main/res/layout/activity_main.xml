@@ -112,7 +112,8 @@
         app:layout_constraintHorizontal_bias="0.883"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.635" />
+        app:layout_constraintVertical_bias="0.635"
+        tools:visibility="gone" />
 
     <Switch
         android:id="@+id/defense"
@@ -127,7 +128,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.643"
-        tools:fontFamily="@font/astronomus" />
+        tools:fontFamily="@font/astronomus"
+        tools:visibility="gone" />
 
     <Spinner
         android:id="@+id/endGame"
@@ -142,7 +144,8 @@
         app:layout_constraintHorizontal_bias="0.042"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.849" />
+        app:layout_constraintVertical_bias="0.849"
+        tools:visibility="gone" />
 
     <Button
         android:id="@+id/submit"
@@ -159,7 +162,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.867"
-        tools:fontFamily="@font/astronomus" />
+        tools:fontFamily="@font/astronomus"
+        tools:visibility="gone" />
 
     <Button
         android:id="@+id/trapMinus"
@@ -174,7 +178,8 @@
         app:layout_constraintHorizontal_bias="0.373"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.678" />
+        app:layout_constraintVertical_bias="0.678"
+        tools:visibility="gone" />
 
     <Button
         android:id="@+id/trapPlus"
@@ -189,7 +194,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.681" />
+        app:layout_constraintVertical_bias="0.681"
+        tools:visibility="gone" />
 
     <TextView
         android:id="@+id/trapScore"
@@ -203,7 +209,8 @@
         app:layout_constraintHorizontal_bias="0.209"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.664" />
+        app:layout_constraintVertical_bias="0.664"
+        tools:visibility="gone" />
 
     <TextView
         android:id="@+id/InfoDisplay"
@@ -211,7 +218,7 @@
         android:layout_height="41dp"
         android:fontFamily="@font/astronomus"
         android:gravity="center"
-        android:text="Name: , Team #: , Match #:"
+        android:text="Team #: , Match #:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.461"
@@ -247,7 +254,8 @@
         app:layout_constraintHorizontal_bias="0.942"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.762" />
+        app:layout_constraintVertical_bias="0.762"
+        tools:visibility="gone" />
 
     <TextView
         android:id="@+id/roboerrorTxt"
@@ -261,7 +269,8 @@
         app:layout_constraintHorizontal_bias="0.88"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.741" />
+        app:layout_constraintVertical_bias="0.741"
+        tools:visibility="gone" />
 
     <TextView
         android:id="@+id/endgameTxt"
@@ -276,7 +285,8 @@
         app:layout_constraintHorizontal_bias="0.162"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.765" />
+        app:layout_constraintVertical_bias="0.765"
+        tools:visibility="gone" />
 
     <ImageView
         android:id="@+id/RR_logo"
@@ -335,7 +345,7 @@
         app:layout_constraintVertical_bias="0.982" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/speaktxt"
         android:layout_width="218dp"
         android:layout_height="34dp"
         android:fontFamily="@font/astronomus"

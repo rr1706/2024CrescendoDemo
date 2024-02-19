@@ -41,13 +41,13 @@ import java.util.Random;
 
 // Up to date tablets
 //
-// blue 3
+// all
 
 public class MainActivity extends AppCompatActivity {
     Spinner endGame, selectedTabNum;
     Button update, imageGrabber, backPre, speakerPlus, speakerMinus, ampPlus, ampMinus, trapPlus, trapMinus, submit, notesSubmit, noShow, redAlliance, blueAlliance, continueBtn, grayBox, autoTele, sameScouter, backbtn, testBtn;
     Switch defense, robotError;
-    TextView ampTxt, speakerTxt, trapTxt, allianceTxt, infoDisplay, endgameTxt, roboTxt, roberTxt, defenTxt;
+    TextView ampTxt, speakerTxt, trapTxt, allianceTxt, infoDisplay, endgameTxt, roboTxt, roberTxt, defenTxt, oobydooby, oobydooby2;
     EditText nameInput, matchNumber, teamNumber, notes;
     CheckBox autofillTeam;
     ImageView rrLogo, spike;
@@ -122,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
         update = findViewById(R.id.updateBtn);
         roberTxt = findViewById(R.id.roboerrorTxt);
         defenTxt = findViewById(R.id.defenceTxt);
+        oobydooby = findViewById(R.id.speaktxt);
+        oobydooby2 = findViewById(R.id.textviewongodiwilldosomebad);
 
         Animation rotate = AnimationUtils.loadAnimation(this, R.anim.rotate_picture);
         Animation flip = AnimationUtils.loadAnimation(this, R.anim.flip);
@@ -252,7 +254,7 @@ public class MainActivity extends AppCompatActivity {
                 grayBox.setVisibility(View.INVISIBLE);
                 teamNumber.setVisibility(View.INVISIBLE);
                 nameInput.setVisibility(View.INVISIBLE);
-                infoDisplay.setText("Name: " + nameInput.getText() + ", Team #: " + teamNumber.getText()+ ", Match #: " + matchNumber.getText());
+                infoDisplay.setText("Team #: " + teamNumber.getText()+ ", Match #: " + matchNumber.getText());
                 autoTele.setText("Auto");
                 autoTele.setText("Auto");
                 trapMinus.setVisibility(View.INVISIBLE);
@@ -301,6 +303,21 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (nameInput.getText().toString().equalsIgnoreCase("cooper fleming")) {
                     background.startAnimation(fall);
+                }
+                if (nameInput.getText().toString().equalsIgnoreCase("jc")) {
+                    autoTele.startAnimation(flip);
+                    speakerPlus.startAnimation(flip);
+                    speakerMinus.startAnimation(flip);
+                    speakerTxt.startAnimation(flip);
+                    ampMinus.startAnimation(flip);
+                    ampPlus.startAnimation(flip);
+                    ampTxt.startAnimation(flip);
+                    backPre.startAnimation(flip);
+                    imageGrabber.startAnimation(flip);
+                    infoDisplay.startAnimation(flip);
+                    rrLogo.startAnimation(flip);
+                    oobydooby2.startAnimation(flip);
+                    oobydooby.startAnimation(flip);
                 }
                 int random = new Random().nextInt(101);
                 if (nameInput.getText().toString().equalsIgnoreCase("rainbow")) {
