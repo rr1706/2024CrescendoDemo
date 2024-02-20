@@ -34,6 +34,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
@@ -45,7 +46,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     Spinner endGame, selectedTabNum;
-    Button update, imageGrabber, backPre, speakerPlus, speakerMinus, ampPlus, ampMinus, trapPlus, trapMinus, submit, notesSubmit, noShow, redAlliance, blueAlliance, continueBtn, grayBox, autoTele, sameScouter, backbtn, testBtn;
+    Button update, imageGrabber, backPre, speakerPlus, speakerMinus, ampPlus, ampMinus, trapPlus, trapMinus, submit, notesSubmit, noShow, redAlliance, blueAlliance, continueBtn, grayBox, autoTele, sameScouter, backbtn, testBtn, note1, note2, note3, note4, note5, note6, note7, note8;
     Switch defense, robotError;
     TextView ampTxt, speakerTxt, trapTxt, allianceTxt, infoDisplay, endgameTxt, roboTxt, roberTxt, defenTxt, oobydooby, oobydooby2;
     EditText nameInput, matchNumber, teamNumber, notes;
@@ -60,13 +61,31 @@ public class MainActivity extends AppCompatActivity {
     int roundfill = 1;
     int timesPressed = 0;
     int woah = 0;
+    int totalOrder = 0;
+    int note1_order = 0;
+    int note2_order = 0;
+    int note3_order = 0;
+    int note4_order = 0;
+    int note5_order = 0;
+    int note6_order = 0;
+    int note7_order = 0;
+    int note8_order = 0;
+    String note1_val = "no";
+    String note2_val = "no";
+    String note3_val = "no";
+    String note4_val = "no";
+    String note5_val = "no";
+    String note6_val = "no";
+    String note7_val = "no";
+    String note8_val = "no";
     String team = "";
     String alliance = "none";
     String tabletName;
     String scouterName;
 
 
-    ConstraintLayout notesBox, preMenu, background;
+
+    ConstraintLayout notesBox, preMenu, background, autoPaths;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,6 +143,15 @@ public class MainActivity extends AppCompatActivity {
         defenTxt = findViewById(R.id.defenceTxt);
         oobydooby = findViewById(R.id.speaktxt);
         oobydooby2 = findViewById(R.id.textviewongodiwilldosomebad);
+        autoPaths = findViewById(R.id.autoLayout);
+        note1 = findViewById(R.id.autoNote1);
+        note2 = findViewById(R.id.autoNote2);
+        note3 = findViewById(R.id.autoNote3);
+        note4 = findViewById(R.id.autoNote4);
+        note5 = findViewById(R.id.autoNote5);
+        note6 = findViewById(R.id.autoNote6);
+        note7 = findViewById(R.id.autoNote7);
+        note8 = findViewById(R.id.autoNote8);
 
         Animation rotate = AnimationUtils.loadAnimation(this, R.anim.rotate_picture);
         Animation flip = AnimationUtils.loadAnimation(this, R.anim.flip);
@@ -271,6 +299,7 @@ public class MainActivity extends AppCompatActivity {
                 robotError.setVisibility(View.INVISIBLE);
                 roberTxt.setVisibility(View.INVISIBLE);
                 defenTxt.setVisibility(View.INVISIBLE);
+                autoPaths.setVisibility(View.VISIBLE);
 
 
                 if (alliance.equals("blue")) {
@@ -502,6 +531,7 @@ public class MainActivity extends AppCompatActivity {
                 roboTxt.setVisibility(View.INVISIBLE);
                 roberTxt.setVisibility(View.INVISIBLE);
                 defenTxt.setVisibility(View.INVISIBLE);
+                autoPaths.setVisibility(View.VISIBLE);
             } else {
                 autoTele.setText("Teleop");
                 trapMinus.setVisibility(View.VISIBLE);
@@ -516,6 +546,7 @@ public class MainActivity extends AppCompatActivity {
                 speakerTxt.setText("(Teleop) speaker: " + teleSpeaker);
                 roberTxt.setVisibility(View.VISIBLE);
                 defenTxt.setVisibility(View.VISIBLE);
+                autoPaths.setVisibility(View.INVISIBLE);
 
             }
         });
@@ -611,6 +642,153 @@ public class MainActivity extends AppCompatActivity {
             trapTxt.setText("trap: " + teleTrap);
         });
 
+        //LISTPLEASEWORK I  A M   B E G G I N G   Y O U
+
+        note1.setOnClickListener(v -> {
+            if (note1_val == "no") {
+                note1_val = "make";
+                note1.setBackgroundColor(Color.GREEN);
+                totalOrder += 1;
+                note1_order = totalOrder;
+            } else if (note1_val == "make") {
+                note1_val = "fail";
+                note1.setBackgroundColor(Color.RED);
+            } else {
+                note1_val = "no";
+                note1.setBackgroundColor(Color.YELLOW);
+                totalOrder -= 1;
+                idiotchecker(note1_order);
+                note1_order = 0;
+            }
+        });
+
+        note2.setOnClickListener(v -> {
+            if (note2_val == "no") {
+                note2_val = "make";
+                note2.setBackgroundColor(Color.GREEN);
+                totalOrder += 1;
+                note2_order = totalOrder;
+            } else if (note2_val == "make") {
+                note2_val = "fail";
+                note2.setBackgroundColor(Color.RED);
+            } else {
+                note2_val = "no";
+                note2.setBackgroundColor(Color.YELLOW);
+                totalOrder -= 1;
+                idiotchecker(note2_order);
+                note2_order = 0;
+            }
+        });
+
+        note3.setOnClickListener(v -> {
+            if (note3_val == "no") {
+                note3_val = "make";
+                note3.setBackgroundColor(Color.GREEN);
+                totalOrder += 1;
+                note3_order = totalOrder;
+            } else if (note3_val == "make") {
+                note3_val = "fail";
+                note3.setBackgroundColor(Color.RED);
+            } else {
+                note3_val = "no";
+                note3.setBackgroundColor(Color.YELLOW);
+                totalOrder -= 1;
+                idiotchecker(note3_order);
+                note3_order = 0;
+            }
+        });
+
+        note4.setOnClickListener(v -> {
+            if (note4_val == "no") {
+                note4_val = "make";
+                note4.setBackgroundColor(Color.GREEN);
+                totalOrder += 1;
+                note4_order = totalOrder;
+            } else if (note4_val == "make") {
+                note4_val = "fail";
+                note4.setBackgroundColor(Color.RED);
+            } else {
+                note4_val = "no";
+                note4.setBackgroundColor(Color.YELLOW);
+                totalOrder -= 1;
+                idiotchecker(note4_order);
+                note4_order = 0;
+            }
+        });
+
+        note5.setOnClickListener(v -> {
+            if (note5_val == "no") {
+                note5_val = "make";
+                note5.setBackgroundColor(Color.GREEN);
+                totalOrder += 1;
+                note5_order = totalOrder;
+            } else if (note5_val == "make") {
+                note5_val = "fail";
+                note5.setBackgroundColor(Color.RED);
+            } else {
+                note5_val = "no";
+                note5.setBackgroundColor(Color.YELLOW);
+                totalOrder -= 1;
+                idiotchecker(note5_order);
+                note5_order = 0;
+            }
+        });
+
+        note6.setOnClickListener(v -> {
+            if (note6_val == "no") {
+                note6_val = "make";
+                note6.setBackgroundColor(Color.GREEN);
+                totalOrder += 1;
+                note6_order = totalOrder;
+            } else if (note6_val == "make") {
+                note6_val = "fail";
+                note6.setBackgroundColor(Color.RED);
+            } else {
+                note6_val = "no";
+                note6.setBackgroundColor(Color.YELLOW);
+                totalOrder -= 1;
+                idiotchecker(note6_order);
+                note6_order = 0;
+            }
+        });
+
+        note7.setOnClickListener(v -> {
+            if (note7_val == "no") {
+                note7_val = "make";
+                note7.setBackgroundColor(Color.GREEN);
+                totalOrder += 1;
+                note7_order = totalOrder;
+            } else if (note7_val == "make") {
+                note7_val = "fail";
+                note7.setBackgroundColor(Color.RED);
+            } else {
+                note7_val = "no";
+                note7.setBackgroundColor(Color.YELLOW);
+                totalOrder -= 1;
+                idiotchecker(note7_order);
+                note7_order = 0;
+            }
+        });
+
+        note8.setOnClickListener(v -> {
+            if (note8_val == "no") {
+                note8_val = "make";
+                note8.setBackgroundColor(Color.GREEN);
+                totalOrder += 1;
+                note8_order = totalOrder;
+            } else if (note8_val == "make") {
+                note8_val = "fail";
+                note8.setBackgroundColor(Color.RED);
+            } else {
+                note8_val = "no";
+                note8.setBackgroundColor(Color.YELLOW);
+                totalOrder -= 1;
+                idiotchecker(note8_order);
+                note8_order = 0;
+            }
+        });
+
+
         submit.setOnClickListener(v -> {
             notesBox.setVisibility(android.view.View.VISIBLE);
             grayBox.setVisibility(View.VISIBLE);
@@ -630,6 +808,7 @@ public class MainActivity extends AppCompatActivity {
 
         //finalSub
         notesSubmit.setOnClickListener(v -> {
+            spike.setVisibility(View.INVISIBLE);
             String submitError = "";
             SimpleDateFormat time = new SimpleDateFormat("dd-HHmmss", Locale.getDefault());
             int team;
@@ -716,6 +895,30 @@ public class MainActivity extends AppCompatActivity {
                     myOutWriter.println("autoAmp: " + autoAmp);
                     myOutWriter.println("teleTrap: " + teleTrap);
                     myOutWriter.println("climb: " + endGame.getSelectedItem());
+
+                    myOutWriter.println("note1: " + note1_val);
+                    myOutWriter.println("note1Order: " + note1_order);
+
+                    myOutWriter.println("note2: " + note2_val);
+                    myOutWriter.println("note2Order: " + note2_order);
+
+                    myOutWriter.println("note3: " + note3_val);
+                    myOutWriter.println("note3Order: " + note3_order);
+
+                    myOutWriter.println("note4: " + note4_val);
+                    myOutWriter.println("note4Order: " + note4_order);
+
+                    myOutWriter.println("note5: " + note5_val);
+                    myOutWriter.println("note5Order: " + note5_order);
+
+                    myOutWriter.println("note6: " + note6_val);
+                    myOutWriter.println("note6Order: " + note6_order);
+
+                    myOutWriter.println("note7: " + note7_val);
+                    myOutWriter.println("note7Order: " + note7_order);
+
+                    myOutWriter.println("note8: " + note8_val);
+                    myOutWriter.println("note8Order: " + note8_order);
 
                     if (defense.isChecked()) {
                         myOutWriter.println("PlayedDefense: yes");
@@ -821,6 +1024,34 @@ public class MainActivity extends AppCompatActivity {
         autoSpeaker = 0;
         timesPressed = 0;
 
+        totalOrder = 0;
+
+        note1_order = 0;
+        note1_val = "no";
+        note1.setBackgroundColor(Color.YELLOW);
+        note2_order = 0;
+        note2_val = "no";
+        note2.setBackgroundColor(Color.YELLOW);
+        note3_order = 0;
+        note3_val = "no";
+        note3.setBackgroundColor(Color.YELLOW);
+        note4_order = 0;
+        note4_val = "no";
+        note4.setBackgroundColor(Color.YELLOW);
+        note5_order = 0;
+        note5_val = "no";
+        note5.setBackgroundColor(Color.YELLOW);
+        note6_order = 0;
+        note6_val = "no";
+        note6.setBackgroundColor(Color.YELLOW);
+        note7_order = 0;
+        note7_val = "no";
+        note7.setBackgroundColor(Color.YELLOW);
+        note8_order = 0;
+        note8_val = "no";
+        note8.setBackgroundColor(Color.YELLOW);
+
+
         if (roundfill > 1) {
             sameScouter.setVisibility(View.VISIBLE);
         }
@@ -847,5 +1078,39 @@ public class MainActivity extends AppCompatActivity {
     public void hideKeyboard(View v) {
         InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(v.getApplicationWindowToken(),0);
+    }
+    public void idiotchecker(int x) {
+        if (note1_order > x) {
+            note1_order -= 1;
+        }
+
+        if (note2_order > x) {
+            note2_order -= 1;
+        }
+
+        if (note3_order > x) {
+            note3_order -= 1;
+        }
+
+        if (note4_order > x) {
+            note4_order -= 1;
+        }
+        if (note5_order > x) {
+            note5_order -= 1;
+        }
+
+        if (note6_order > x) {
+            note6_order -= 1;
+        }
+
+        if (note7_order > x) {
+            note7_order -= 1;
+        }
+
+        if (note8_order > x) {
+            note8_order -= 1;
+        }
+
+
     }
 }
