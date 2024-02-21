@@ -617,6 +617,7 @@ public class MainActivity extends AppCompatActivity {
             notes.setVisibility(View.VISIBLE);
             notesSubmit.setVisibility(View.VISIBLE);
             backbtn.setVisibility(View.VISIBLE);
+            spike.setVisibility(View.INVISIBLE);
         });
 
         backbtn.setOnClickListener(v -> {
@@ -630,6 +631,7 @@ public class MainActivity extends AppCompatActivity {
 
         //finalSub
         notesSubmit.setOnClickListener(v -> {
+            spike.setVisibility(View.INVISIBLE);
             String submitError = "";
             SimpleDateFormat time = new SimpleDateFormat("dd-HHmmss", Locale.getDefault());
             int team;
