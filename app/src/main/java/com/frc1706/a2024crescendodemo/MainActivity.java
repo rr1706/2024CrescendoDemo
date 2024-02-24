@@ -11,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
@@ -60,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
     int roundfill = 1;
     int timesPressed = 0;
     int woah = 0;
+    int seconds = 0;
+    boolean countDown = false;
     String team = "";
     String alliance = "none";
     String tabletName;
@@ -271,6 +274,8 @@ public class MainActivity extends AppCompatActivity {
                 robotError.setVisibility(View.INVISIBLE);
                 roberTxt.setVisibility(View.INVISIBLE);
                 defenTxt.setVisibility(View.INVISIBLE);
+                countDown = true;
+                runtimer();
 
 
                 if (alliance.equals("blue")) {
@@ -793,6 +798,56 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+    private void runtimer() {
+        final Handler handler = new Handler();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                if (seconds >= 60) {
+                    //change mode
+                    if (autoTele.getText().equals("Auto")) {
+                        autoTele.setText("Teleop");
+                        trapMinus.setVisibility(View.VISIBLE);
+                        trapPlus.setVisibility(View.VISIBLE);
+                        trapTxt.setVisibility(View.VISIBLE);
+                        endGame.setVisibility(View.VISIBLE);
+                        defense.setVisibility(View.VISIBLE);
+                        submit.setVisibility(View.VISIBLE);
+                        endgameTxt.setVisibility(View.VISIBLE);
+                        robotError.setVisibility(View.VISIBLE);
+                        ampTxt.setText("(Teleop) amp: " + teleAmp);
+                        speakerTxt.setText("(Teleop) speaker: " + teleSpeaker);
+                        roberTxt.setVisibility(View.VISIBLE);
+                        defenTxt.setVisibility(View.VISIBLE);
+                        countDown = false;
+                        seconds = 0;
+
+                    }
+                }
+                if (autoTele.getText().equals("Auto")) {
+                    if (seconds >= 45 && seconds % 2 == 0) {
+                        background.setBackgroundColor(Color.YELLOW);
+                    }
+
+                    if (seconds >= 45 && seconds % 2 == 1) {
+                        if (alliance.equals("blue")) {
+                            background.setBackgroundColor(Color.argb(127, 127, 127, 247));
+                        }
+                        if (alliance.equals("red")) {
+                            background.setBackgroundColor(Color.argb(127, 247, 127, 127));
+                        }
+                    }
+
+                    if (countDown == true) {
+                        seconds = seconds + 1;
+                    }
+
+                    handler.postDelayed(this, 250);
+
+                }
+            }
+        });
+    }
     private void resetVars() {
         roundfill = Integer.parseInt(matchNumber.getText().toString());
         roundfill++;
@@ -822,6 +877,8 @@ public class MainActivity extends AppCompatActivity {
         autoAmp = 0;
         autoSpeaker = 0;
         timesPressed = 0;
+        seconds = 0;
+        countDown = false;
 
         if (roundfill > 1) {
             sameScouter.setVisibility(View.VISIBLE);
