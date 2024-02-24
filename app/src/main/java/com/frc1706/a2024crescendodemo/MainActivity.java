@@ -308,13 +308,6 @@ public class MainActivity extends AppCompatActivity {
                 defenTxt.setVisibility(View.INVISIBLE);
                 autoPaths.setVisibility(View.VISIBLE);
 
-
-                if (alliance.equals("blue")) {
-                    endGame.setBackgroundColor(Color.argb(0, 127, 127, 247));
-                } else {
-                    endGame.setBackgroundColor(Color.argb(0, 247, 127, 127));
-                }
-
                 if (team.equals("1706")) {
                     background.startAnimation(rotate);
                 }

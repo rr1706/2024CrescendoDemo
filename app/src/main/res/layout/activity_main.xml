@@ -133,19 +133,19 @@
 
     <Spinner
         android:id="@+id/endGame"
-        android:layout_width="227dp"
-        android:layout_height="88dp"
-        android:background="#002196F3"
+        android:layout_width="217dp"
+        android:layout_height="61dp"
+        android:background="@color/white"
         android:entries="@array/endgame"
         android:spinnerMode="dropdown"
         android:theme="@style/SpinnerTheme"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintHorizontal_bias="0.041"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.849"
-        tools:visibility="gone" />
+        app:layout_constraintVertical_bias="0.838"
+        tools:visibility="visible" />
 
     <Button
         android:id="@+id/submit"
@@ -286,7 +286,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.765"
-        tools:visibility="gone" />
+        tools:visibility="visible" />
 
     <ImageView
         android:id="@+id/RR_logo"
@@ -736,7 +736,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.895"
-        tools:visibility="visible">
+        tools:visibility="gone">
 
         <ImageView
             android:id="@+id/imageView"
