@@ -133,9 +133,9 @@
 
     <Spinner
         android:id="@+id/endGame"
-        android:layout_width="227dp"
-        android:layout_height="88dp"
-        android:background="#002196F3"
+        android:layout_width="223dp"
+        android:layout_height="62dp"
+        android:background="@color/white"
         android:entries="@array/endgame"
         android:spinnerMode="dropdown"
         android:theme="@style/SpinnerTheme"
@@ -144,7 +144,7 @@
         app:layout_constraintHorizontal_bias="0.042"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.849"
+        app:layout_constraintVertical_bias="0.842"
         tools:visibility="gone" />
 
     <Button
