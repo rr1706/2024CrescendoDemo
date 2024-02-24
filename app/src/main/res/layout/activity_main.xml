@@ -362,7 +362,7 @@
         tools:textColor="@color/white" />
 
     <TextView
-        android:id="@+id/textviewongodiwilldosomebad"
+        android:id="@+id/amptxt_abpistgiwdsb"
         android:layout_width="221dp"
         android:layout_height="36dp"
         android:fontFamily="@font/astronomus"
@@ -760,7 +760,7 @@
             android:layout_height="50dp"
             android:layout_marginStart="282dp"
             android:layout_marginEnd="225dp"
-            app:backgroundTint="#FFEB3B"
+            app:backgroundTint="#D3D3D3"
             app:iconTint="#FFEB3B"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -774,7 +774,7 @@
             android:id="@+id/autoNote2"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            app:backgroundTint="#FFEB3B"
+            app:backgroundTint="#D3D3D3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.441"
@@ -789,7 +789,7 @@
             android:layout_height="50dp"
             android:layout_marginEnd="219dp"
             android:layout_marginBottom="20dp"
-            app:backgroundTint="#FFEB3B"
+            app:backgroundTint="#D3D3D3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.888"
@@ -802,7 +802,7 @@
             android:id="@+id/autoNote4"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            app:backgroundTint="#FFEB3B"
+            app:backgroundTint="#D3D3D3"
             app:iconTint="#FFEB3B"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -816,7 +816,7 @@
             android:id="@+id/autoNote5"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            app:backgroundTint="#FFEB3B"
+            app:backgroundTint="#D3D3D3"
             app:iconTint="#FFEB3B"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -830,7 +830,7 @@
             android:id="@+id/autoNote6"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            app:backgroundTint="#FFEB3B"
+            app:backgroundTint="#D3D3D3"
             app:iconTint="#FFEB3B"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -844,7 +844,7 @@
             android:id="@+id/autoNote7"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            app:backgroundTint="#FFEB3B"
+            app:backgroundTint="#D3D3D3"
             app:iconTint="#FFEB3B"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -858,7 +858,7 @@
             android:id="@+id/autoNote8"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            app:backgroundTint="#FFEB3B"
+            app:backgroundTint="#D3D3D3"
             app:iconTint="#FFEB3B"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -867,6 +867,125 @@
             app:layout_constraintTop_toTopOf="@+id/imageView"
             app:layout_constraintVertical_bias="0.899"
             tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/note1txt"
+            android:layout_width="51dp"
+            android:layout_height="34dp"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.557"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/note2text"
+            android:layout_width="51dp"
+            android:layout_height="34dp"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.555"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.677" />
+
+        <TextView
+            android:id="@+id/note3txt"
+            android:layout_width="51dp"
+            android:layout_height="34dp"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.557"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.831" />
+
+        <TextView
+            android:id="@+id/note4txt"
+            android:layout_width="51dp"
+            android:layout_height="34dp"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.219"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.174" />
+
+        <TextView
+            android:id="@+id/note5txt"
+            android:layout_width="51dp"
+            android:layout_height="34dp"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.221"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.346" />
+
+        <TextView
+            android:id="@+id/note6txt"
+            android:layout_width="51dp"
+            android:layout_height="34dp"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.221"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.524" />
+
+        <TextView
+            android:id="@+id/note7txt"
+            android:layout_width="51dp"
+            android:layout_height="34dp"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.219"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.699" />
+
+        <TextView
+            android:id="@+id/note8txt"
+            android:layout_width="51dp"
+            android:layout_height="34dp"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.221"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.886" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

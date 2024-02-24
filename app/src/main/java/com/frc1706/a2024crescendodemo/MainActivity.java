@@ -34,7 +34,6 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     Spinner endGame, selectedTabNum;
     Button update, imageGrabber, backPre, speakerPlus, speakerMinus, ampPlus, ampMinus, trapPlus, trapMinus, submit, notesSubmit, noShow, redAlliance, blueAlliance, continueBtn, grayBox, autoTele, sameScouter, backbtn, testBtn, note1, note2, note3, note4, note5, note6, note7, note8;
     Switch defense, robotError;
-    TextView ampTxt, speakerTxt, trapTxt, allianceTxt, infoDisplay, endgameTxt, roboTxt, roberTxt, defenTxt, oobydooby, oobydooby2;
+    TextView ampTxt, speakerTxt, trapTxt, allianceTxt, infoDisplay, endgameTxt, roboTxt, roberTxt, defenTxt, speaktxt, amptxt, note1txt, note2txt, note3txt, note4txt, note5txt, note6txt, note7txt, note8txt;
     EditText nameInput, matchNumber, teamNumber, notes;
     CheckBox autofillTeam;
     ImageView rrLogo, spike;
@@ -141,8 +140,8 @@ public class MainActivity extends AppCompatActivity {
         update = findViewById(R.id.updateBtn);
         roberTxt = findViewById(R.id.roboerrorTxt);
         defenTxt = findViewById(R.id.defenceTxt);
-        oobydooby = findViewById(R.id.speaktxt);
-        oobydooby2 = findViewById(R.id.textviewongodiwilldosomebad);
+        speaktxt = findViewById(R.id.speaktxt);
+        amptxt = findViewById(R.id.amptxt_abpistgiwdsb);
         autoPaths = findViewById(R.id.autoLayout);
         note1 = findViewById(R.id.autoNote1);
         note2 = findViewById(R.id.autoNote2);
@@ -152,6 +151,14 @@ public class MainActivity extends AppCompatActivity {
         note6 = findViewById(R.id.autoNote6);
         note7 = findViewById(R.id.autoNote7);
         note8 = findViewById(R.id.autoNote8);
+        note1txt = findViewById(R.id.note1txt);
+        note2txt = findViewById(R.id.note2text);
+        note3txt = findViewById(R.id.note3txt);
+        note4txt = findViewById(R.id.note4txt);
+        note5txt = findViewById(R.id.note5txt);
+        note6txt = findViewById(R.id.note6txt);
+        note7txt = findViewById(R.id.note7txt);
+        note8txt = findViewById(R.id.note8txt);
 
         Animation rotate = AnimationUtils.loadAnimation(this, R.anim.rotate_picture);
         Animation flip = AnimationUtils.loadAnimation(this, R.anim.flip);
@@ -345,8 +352,8 @@ public class MainActivity extends AppCompatActivity {
                     imageGrabber.startAnimation(flip);
                     infoDisplay.startAnimation(flip);
                     rrLogo.startAnimation(flip);
-                    oobydooby2.startAnimation(flip);
-                    oobydooby.startAnimation(flip);
+                    amptxt.startAnimation(flip);
+                    speaktxt.startAnimation(flip);
                 }
                 int random = new Random().nextInt(101);
                 if (nameInput.getText().toString().equalsIgnoreCase("rainbow")) {
@@ -574,7 +581,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //weeboo dweeboo gweeboo
 
         speakerMinus.setOnClickListener(v -> {
             if (autoTele.getText() == "Teleop") {
@@ -655,11 +661,12 @@ public class MainActivity extends AppCompatActivity {
                 note1.setBackgroundColor(Color.RED);
             } else {
                 note1_val = "no";
-                note1.setBackgroundColor(Color.YELLOW);
+                note1.setBackgroundColor(Color.LTGRAY);
                 totalOrder -= 1;
                 idiotchecker(note1_order);
                 note1_order = 0;
             }
+            updatenotes();
         });
 
         note2.setOnClickListener(v -> {
@@ -673,11 +680,12 @@ public class MainActivity extends AppCompatActivity {
                 note2.setBackgroundColor(Color.RED);
             } else {
                 note2_val = "no";
-                note2.setBackgroundColor(Color.YELLOW);
+                note2.setBackgroundColor(Color.LTGRAY);
                 totalOrder -= 1;
                 idiotchecker(note2_order);
                 note2_order = 0;
             }
+            updatenotes();
         });
 
         note3.setOnClickListener(v -> {
@@ -691,11 +699,12 @@ public class MainActivity extends AppCompatActivity {
                 note3.setBackgroundColor(Color.RED);
             } else {
                 note3_val = "no";
-                note3.setBackgroundColor(Color.YELLOW);
+                note3.setBackgroundColor(Color.LTGRAY);
                 totalOrder -= 1;
                 idiotchecker(note3_order);
                 note3_order = 0;
             }
+            updatenotes();
         });
 
         note4.setOnClickListener(v -> {
@@ -709,11 +718,12 @@ public class MainActivity extends AppCompatActivity {
                 note4.setBackgroundColor(Color.RED);
             } else {
                 note4_val = "no";
-                note4.setBackgroundColor(Color.YELLOW);
+                note4.setBackgroundColor(Color.LTGRAY);
                 totalOrder -= 1;
                 idiotchecker(note4_order);
                 note4_order = 0;
             }
+            updatenotes();
         });
 
         note5.setOnClickListener(v -> {
@@ -727,11 +737,12 @@ public class MainActivity extends AppCompatActivity {
                 note5.setBackgroundColor(Color.RED);
             } else {
                 note5_val = "no";
-                note5.setBackgroundColor(Color.YELLOW);
+                note5.setBackgroundColor(Color.LTGRAY);
                 totalOrder -= 1;
                 idiotchecker(note5_order);
                 note5_order = 0;
             }
+            updatenotes();
         });
 
         note6.setOnClickListener(v -> {
@@ -745,11 +756,12 @@ public class MainActivity extends AppCompatActivity {
                 note6.setBackgroundColor(Color.RED);
             } else {
                 note6_val = "no";
-                note6.setBackgroundColor(Color.YELLOW);
+                note6.setBackgroundColor(Color.LTGRAY);
                 totalOrder -= 1;
                 idiotchecker(note6_order);
                 note6_order = 0;
             }
+            updatenotes();
         });
 
         note7.setOnClickListener(v -> {
@@ -763,11 +775,12 @@ public class MainActivity extends AppCompatActivity {
                 note7.setBackgroundColor(Color.RED);
             } else {
                 note7_val = "no";
-                note7.setBackgroundColor(Color.YELLOW);
+                note7.setBackgroundColor(Color.LTGRAY);
                 totalOrder -= 1;
                 idiotchecker(note7_order);
                 note7_order = 0;
             }
+            updatenotes();
         });
 
         note8.setOnClickListener(v -> {
@@ -781,11 +794,12 @@ public class MainActivity extends AppCompatActivity {
                 note8.setBackgroundColor(Color.RED);
             } else {
                 note8_val = "no";
-                note8.setBackgroundColor(Color.YELLOW);
+                note8.setBackgroundColor(Color.LTGRAY);
                 totalOrder -= 1;
                 idiotchecker(note8_order);
                 note8_order = 0;
             }
+            updatenotes();
         });
 
 
@@ -1028,28 +1042,28 @@ public class MainActivity extends AppCompatActivity {
 
         note1_order = 0;
         note1_val = "no";
-        note1.setBackgroundColor(Color.YELLOW);
+        note1.setBackgroundColor(Color.LTGRAY);
         note2_order = 0;
         note2_val = "no";
-        note2.setBackgroundColor(Color.YELLOW);
+        note2.setBackgroundColor(Color.LTGRAY);
         note3_order = 0;
         note3_val = "no";
-        note3.setBackgroundColor(Color.YELLOW);
+        note3.setBackgroundColor(Color.LTGRAY);
         note4_order = 0;
         note4_val = "no";
-        note4.setBackgroundColor(Color.YELLOW);
+        note4.setBackgroundColor(Color.LTGRAY);
         note5_order = 0;
         note5_val = "no";
-        note5.setBackgroundColor(Color.YELLOW);
+        note5.setBackgroundColor(Color.LTGRAY);
         note6_order = 0;
         note6_val = "no";
-        note6.setBackgroundColor(Color.YELLOW);
+        note6.setBackgroundColor(Color.LTGRAY);
         note7_order = 0;
         note7_val = "no";
-        note7.setBackgroundColor(Color.YELLOW);
+        note7.setBackgroundColor(Color.LTGRAY);
         note8_order = 0;
         note8_val = "no";
-        note8.setBackgroundColor(Color.YELLOW);
+        note8.setBackgroundColor(Color.LTGRAY);
 
 
         if (roundfill > 1) {
@@ -1110,7 +1124,17 @@ public class MainActivity extends AppCompatActivity {
         if (note8_order > x) {
             note8_order -= 1;
         }
+    }
 
+    public void updatenotes() {
+        note2txt.setText(Integer.toString(note2_order));
+        note1txt.setText(Integer.toString(note1_order));
+        note3txt.setText(Integer.toString(note3_order));
+        note4txt.setText(Integer.toString(note4_order));
+        note5txt.setText(Integer.toString(note5_order));
+        note6txt.setText(Integer.toString(note6_order));
+        note7txt.setText(Integer.toString(note7_order));
+        note8txt.setText(Integer.toString(note8_order));
 
     }
 }
