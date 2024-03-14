@@ -11,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
@@ -44,10 +45,10 @@ import java.util.Random;
 // all
 
 public class MainActivity extends AppCompatActivity {
-    Spinner endGame, selectedTabNum;
-    Button update, imageGrabber, backPre, speakerPlus, speakerMinus, ampPlus, ampMinus, trapPlus, trapMinus, submit, notesSubmit, noShow, redAlliance, blueAlliance, continueBtn, grayBox, autoTele, sameScouter, backbtn, testBtn, note1, note2, note3, note4, note5, note6, note7, note8;
-    Switch defense, robotError;
-    TextView ampTxt, speakerTxt, trapTxt, allianceTxt, infoDisplay, endgameTxt, roboTxt, roberTxt, defenTxt, speaktxt, amptxt, note1txt, note2txt, note3txt, note4txt, note5txt, note6txt, note7txt, note8txt;
+    Spinner endGame, selectedTabNum, trapScore;
+    Button preload, update, imageGrabber, backPre, speakerPlus, speakerMinus, ampPlus, ampMinus, trapPlus, trapMinus, submit, notesSubmit, noShow, redAlliance, blueAlliance, continueBtn, grayBox, autoTele, sameScouter, backbtn, testBtn, note1, note2, note3, note4, note5, note6, note7, note8;
+    Switch robotError;
+    TextView ampTxt, speakerTxt, trapTxt, allianceTxt, infoDisplay, endgameTxt, roboTxt, roberTxt, speaktxt, amptxt, note1txt, note2txt, note3txt, note4txt, note5txt, note6txt, note7txt, note8txt;
     EditText nameInput, matchNumber, teamNumber, notes;
     CheckBox autofillTeam;
     ImageView rrLogo, spike;
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
     int note6_order = 0;
     int note7_order = 0;
     int note8_order = 0;
+    int seconds = 0;
     String note1_val = "no";
     String note2_val = "no";
     String note3_val = "no";
@@ -77,14 +79,17 @@ public class MainActivity extends AppCompatActivity {
     String note6_val = "no";
     String note7_val = "no";
     String note8_val = "no";
+    String preload_val = "no";
     String team = "";
     String alliance = "none";
     String tabletName;
     String scouterName;
+    Boolean countDown;
+    Boolean autoclicked = false;
 
 
 
-    ConstraintLayout notesBox, preMenu, background, autoPaths;
+    ConstraintLayout notesBox, preMenu, background, autoPaths, teleLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,14 +105,14 @@ public class MainActivity extends AppCompatActivity {
         ampMinus = findViewById(R.id.ampMinus);
         speakerPlus = findViewById(R.id.speakerPlus);
         speakerMinus = findViewById(R.id.speakerMinus);
-        trapPlus = findViewById(R.id.trapPlus);
-        trapMinus = findViewById(R.id.trapMinus);
+        trapPlus = findViewById(R.id.feedPlus);
+        trapMinus = findViewById(R.id.feedMinus);
         submit = findViewById(R.id.submit);
         endGame = findViewById(R.id.endGame);
         ampTxt = findViewById(R.id.ampValue);
         speakerTxt = findViewById(R.id.speakerValue);
-        trapTxt = findViewById(R.id.trapScore);
-        defense = findViewById(R.id.defense);
+        trapTxt = findViewById(R.id.feederScore);
+
         notesBox = findViewById(R.id.notesBox);
         notesSubmit = findViewById(R.id.noteSubmit);
         nameInput = findViewById(R.id.nameInput);
@@ -139,7 +144,6 @@ public class MainActivity extends AppCompatActivity {
         selectedTabNum = findViewById(R.id.TabletNumborFoRealNoCapNoCapNoCap);
         update = findViewById(R.id.updateBtn);
         roberTxt = findViewById(R.id.roboerrorTxt);
-        defenTxt = findViewById(R.id.defenceTxt);
         speaktxt = findViewById(R.id.speaktxt);
         amptxt = findViewById(R.id.amptxt_abpistgiwdsb);
         autoPaths = findViewById(R.id.autoLayout);
@@ -159,6 +163,9 @@ public class MainActivity extends AppCompatActivity {
         note6txt = findViewById(R.id.note6txt);
         note7txt = findViewById(R.id.note7txt);
         note8txt = findViewById(R.id.note8txt);
+        teleLayout = findViewById(R.id.teleLayout);
+        trapScore = findViewById(R.id.trapScore);
+        preload = findViewById(R.id.preloaded);
 
         Animation rotate = AnimationUtils.loadAnimation(this, R.anim.rotate_picture);
         Animation flip = AnimationUtils.loadAnimation(this, R.anim.flip);
@@ -292,21 +299,13 @@ public class MainActivity extends AppCompatActivity {
                 infoDisplay.setText("Team #: " + teamNumber.getText()+ ", Match #: " + matchNumber.getText());
                 autoTele.setText("Auto");
                 autoTele.setText("Auto");
-                trapMinus.setVisibility(View.INVISIBLE);
-                trapPlus.setVisibility(View.INVISIBLE);
-                trapTxt.setVisibility(View.INVISIBLE);
-                endGame.setVisibility(View.INVISIBLE);
-                defense.setVisibility(View.INVISIBLE);
-                submit.setVisibility(View.INVISIBLE);
-                endgameTxt.setVisibility(View.INVISIBLE);
-                ampTxt.setText("(Auto) amp: " + autoAmp);
-                trapTxt.setText("trap: " + teleTrap);
-                speakerTxt.setText("(Auto) speaker: " + autoSpeaker);
+                trapTxt.setText("Notes Brought to alliance: " + teleTrap);
                 team = teamNumber.getText().toString();
-                robotError.setVisibility(View.INVISIBLE);
-                roberTxt.setVisibility(View.INVISIBLE);
-                defenTxt.setVisibility(View.INVISIBLE);
+                ampTxt.setText("amp: 0");
+                speaktxt.setText("speaker: 0");
+                teleLayout.setVisibility(View.INVISIBLE);
                 autoPaths.setVisibility(View.VISIBLE);
+
 
                 if (team.equals("1706")) {
                     background.startAnimation(rotate);
@@ -515,37 +514,19 @@ public class MainActivity extends AppCompatActivity {
 
         //Auto stuff
         autoTele.setOnClickListener(v -> {
+            if (alliance.equals("blue")) {
+                background.setBackgroundColor(Color.argb(127, 127, 127, 247));
+            }
+            if (alliance.equals("red")) {
+                background.setBackgroundColor(Color.argb(127, 247, 127, 127));
+            }
             if (autoTele.getText() == "Teleop") {
                 autoTele.setText("Auto");
-                trapMinus.setVisibility(View.INVISIBLE);
-                trapPlus.setVisibility(View.INVISIBLE);
-                trapTxt.setVisibility(View.INVISIBLE);
-                endGame.setVisibility(View.INVISIBLE);
-                defense.setVisibility(View.INVISIBLE);
-                submit.setVisibility(View.INVISIBLE);
-                endGame.setVisibility(View.INVISIBLE);
-                endgameTxt.setVisibility(View.INVISIBLE);
-                ampTxt.setText("(Auto) amp: " + autoAmp);
-                speakerTxt.setText("(Auto) speaker: " + autoSpeaker);
-                robotError.setVisibility(View.INVISIBLE);
-                roboTxt.setVisibility(View.INVISIBLE);
-                roberTxt.setVisibility(View.INVISIBLE);
-                defenTxt.setVisibility(View.INVISIBLE);
+                teleLayout.setVisibility(View.INVISIBLE);
                 autoPaths.setVisibility(View.VISIBLE);
             } else {
                 autoTele.setText("Teleop");
-                trapMinus.setVisibility(View.VISIBLE);
-                trapPlus.setVisibility(View.VISIBLE);
-                trapTxt.setVisibility(View.VISIBLE);
-                endGame.setVisibility(View.VISIBLE);
-                defense.setVisibility(View.VISIBLE);
-                submit.setVisibility(View.VISIBLE);
-                endgameTxt.setVisibility(View.VISIBLE);
-                robotError.setVisibility(View.VISIBLE);
-                ampTxt.setText("(Teleop) amp: " + teleAmp);
-                speakerTxt.setText("(Teleop) speaker: " + teleSpeaker);
-                roberTxt.setVisibility(View.VISIBLE);
-                defenTxt.setVisibility(View.VISIBLE);
+                teleLayout.setVisibility(View.VISIBLE);
                 autoPaths.setVisibility(View.INVISIBLE);
 
             }
@@ -555,7 +536,7 @@ public class MainActivity extends AppCompatActivity {
         speakerPlus.setOnClickListener(v -> {
             if (autoTele.getText() == "Teleop" && teleSpeaker <= 40) {
                 teleSpeaker += 1;
-                speakerTxt.setText("(Teleop) speaker: " + teleSpeaker);
+                speakerTxt.setText("speaker: " + teleSpeaker);
             } else {
                 autoSpeaker += 1;
                 speakerTxt.setText("(Auto) speaker: " + autoSpeaker);
@@ -579,7 +560,7 @@ public class MainActivity extends AppCompatActivity {
             if (autoTele.getText() == "Teleop") {
                 if (teleSpeaker > 0) {
                     teleSpeaker -= 1;
-                    speakerTxt.setText("(Teleop) speaker: " + teleSpeaker);
+                    speakerTxt.setText("speaker: " + teleSpeaker);
                 }
             } else {
                 if (autoSpeaker > 0) {
@@ -594,7 +575,7 @@ public class MainActivity extends AppCompatActivity {
         ampPlus.setOnClickListener(v -> {
             if (autoTele.getText() == "Teleop" && teleAmp <= 40) {
                 teleAmp += 1;
-                ampTxt.setText("(Teleop) amp: " + teleAmp);
+                ampTxt.setText("amp: " + teleAmp);
             } else {
                 autoAmp += 1;
                 ampTxt.setText("(Auto) amp: " + autoAmp);
@@ -617,7 +598,7 @@ public class MainActivity extends AppCompatActivity {
             if (autoTele.getText() == "Teleop") {
                 if (teleAmp > 0) {
                     teleAmp -= 1;
-                    ampTxt.setText("(Teleop) amp: " + (teleAmp));
+                    ampTxt.setText("amp: " + (teleAmp));
                 }
             } else {
                 if (autoAmp > 0) {
@@ -628,17 +609,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
         trapPlus.setOnClickListener(v -> {
-            if (teleTrap < 3) {
                 teleTrap += 1;
-            }
-            trapTxt.setText("trap: " + teleTrap);
+            trapTxt.setText("Notes Brought to alliance: " + teleTrap);
         });
 
         trapMinus.setOnClickListener(v -> {
             if (teleTrap > 0) {
                 teleTrap -= 1;
             }
-            trapTxt.setText("trap: " + teleTrap);
+            trapTxt.setText("Notes Brought to alliance: " + teleTrap);
         });
 
         //LISTPLEASEWORK I  A M   B E G G I N G   Y O U
@@ -795,6 +774,19 @@ public class MainActivity extends AppCompatActivity {
             updatenotes();
         });
 
+        preload.setOnClickListener(v -> {
+            if (preload_val == "no") {
+                preload_val = "make";
+                preload.setBackgroundColor(Color.GREEN);
+            } else if (preload_val == "make") {
+                preload_val = "fail";
+                preload.setBackgroundColor(Color.RED);
+            } else {
+                preload_val = "no";
+                preload.setBackgroundColor(Color.LTGRAY);
+            }
+        });
+
 
         submit.setOnClickListener(v -> {
             notesBox.setVisibility(android.view.View.VISIBLE);
@@ -900,38 +892,36 @@ public class MainActivity extends AppCompatActivity {
                     myOutWriter.println("teleAmp: " + teleAmp);
                     myOutWriter.println("autoSpeaker: " + autoSpeaker);
                     myOutWriter.println("autoAmp: " + autoAmp);
-                    myOutWriter.println("teleTrap: " + teleTrap);
+                    myOutWriter.println("teleTrap: " + trapScore.getSelectedItem().toString());
                     myOutWriter.println("climb: " + endGame.getSelectedItem());
 
-                    myOutWriter.println("note1: " + note1_val);
-                    myOutWriter.println("note1Order: " + note1_order);
+                    myOutWriter.println("feeded: " + teleTrap);
 
-                    myOutWriter.println("note2: " + note2_val);
-                    myOutWriter.println("note2Order: " + note2_order);
+                    myOutWriter.println("noteClose1: " + note1_val);
+                    myOutWriter.println("noteClose1Order: " + note1_order);
 
-                    myOutWriter.println("note3: " + note3_val);
-                    myOutWriter.println("note3Order: " + note3_order);
+                    myOutWriter.println("noteClose2: " + note2_val);
+                    myOutWriter.println("noteClose2Order: " + note2_order);
 
-                    myOutWriter.println("note4: " + note4_val);
-                    myOutWriter.println("note4Order: " + note4_order);
+                    myOutWriter.println("noteClose3: " + note3_val);
+                    myOutWriter.println("noteClose3Order: " + note3_order);
 
-                    myOutWriter.println("note5: " + note5_val);
-                    myOutWriter.println("note5Order: " + note5_order);
+                    myOutWriter.println("noteCenter1: " + note4_val);
+                    myOutWriter.println("noteCenter1Order: " + note4_order);
 
-                    myOutWriter.println("note6: " + note6_val);
-                    myOutWriter.println("note6Order: " + note6_order);
+                    myOutWriter.println("noteCenter2: " + note5_val);
+                    myOutWriter.println("noteCenter2Order: " + note5_order);
 
-                    myOutWriter.println("note7: " + note7_val);
-                    myOutWriter.println("note7Order: " + note7_order);
+                    myOutWriter.println("noteCenter3: " + note6_val);
+                    myOutWriter.println("noteCenter3Order: " + note6_order);
 
-                    myOutWriter.println("note8: " + note8_val);
-                    myOutWriter.println("note8Order: " + note8_order);
+                    myOutWriter.println("noteCenter4: " + note7_val);
+                    myOutWriter.println("noteCenter4Order: " + note7_order);
 
-                    if (defense.isChecked()) {
-                        myOutWriter.println("PlayedDefense: yes");
-                    } else {
-                        myOutWriter.println("PlayedDefense: no");
-                    }
+                    myOutWriter.println("noteCenter5: " + note8_val);
+                    myOutWriter.println("noteCenter5Order: " + note8_order);
+
+                    myOutWriter.println("preload: " + preload_val);
 
                     myOutWriter.println("Comment: " + notes.getText());
 
@@ -1001,6 +991,48 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    private void runtimer() {
+        if (autoclicked == false) {
+            final Handler handler = new Handler();
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    if (seconds >= 60) {
+                        //change mode
+                        if (autoTele.getText().equals("Auto")) {
+                            autoTele.setText("Teleop");
+                            teleLayout.setVisibility(View.VISIBLE);
+                            countDown = false;
+                            seconds = 0;
+
+                        }
+                    }
+                    if (autoTele.getText().equals("Auto")) {
+                        if (seconds >= 45 && seconds % 2 == 0) {
+                            background.setBackgroundColor(Color.YELLOW);
+                        }
+
+                        if (seconds >= 45 && seconds % 2 == 1) {
+                            if (alliance.equals("blue")) {
+                                background.setBackgroundColor(Color.argb(127, 127, 127, 247));
+                            }
+                            if (alliance.equals("red")) {
+                                background.setBackgroundColor(Color.argb(127, 247, 127, 127));
+                            }
+                        }
+
+                        if (countDown == true) {
+                            seconds = seconds + 1;
+                        }
+
+                        handler.postDelayed(this, 250);
+
+                    }
+                }
+            });
+        }
+    }
     private void resetVars() {
         roundfill = Integer.parseInt(matchNumber.getText().toString());
         roundfill++;
@@ -1011,10 +1043,8 @@ public class MainActivity extends AppCompatActivity {
         matchNumber.setText(String.valueOf(roundfill));
         teamNumber.setText("");
         endGame.setSelection(0);
-        submit.setVisibility(View.INVISIBLE);
-        endGame.setVisibility(View.INVISIBLE);
+        trapScore.setSelection(0);
         robotError.setChecked(false);
-        defense.setChecked(false);
         preMenu.setVisibility(View.VISIBLE);
         grayBox.setVisibility(View.VISIBLE);
         nameInput.setVisibility(View.VISIBLE);
@@ -1024,6 +1054,7 @@ public class MainActivity extends AppCompatActivity {
         notes.setVisibility(View.INVISIBLE);
         notesBox.setVisibility(View.INVISIBLE);
         notesSubmit.setVisibility(View.INVISIBLE);
+        roberTxt.setVisibility(View.INVISIBLE);
         teleTrap = 0;
         teleAmp = 0;
         teleSpeaker = 0;
@@ -1058,6 +1089,9 @@ public class MainActivity extends AppCompatActivity {
         note8_val = "no";
         note8.setBackgroundColor(Color.LTGRAY);
 
+        preload_val = "no";
+        preload.setBackgroundColor(Color.LTGRAY);
+
 
         if (roundfill > 1) {
             sameScouter.setVisibility(View.VISIBLE);
@@ -1066,7 +1100,6 @@ public class MainActivity extends AppCompatActivity {
             teamNumber.setText("");
         }
     }
-
 
     @Override
     public void onBackPressed() {}
