@@ -46,15 +46,15 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     Spinner endGame, selectedTabNum, trapScore;
-    Button preload, update, imageGrabber, backPre, speakerPlus, speakerMinus, ampPlus, ampMinus, trapPlus, trapMinus, submit, notesSubmit, noShow, redAlliance, blueAlliance, continueBtn, grayBox, autoTele, sameScouter, backbtn, testBtn, note1, note2, note3, note4, note5, note6, note7, note8;
+    Button preload, update, imageGrabber, backPre, speakerPlus, speakerMinus, ampPlus, ampMinus, feedPlus, feedMinus, submit, notesSubmit, noShow, redAlliance, blueAlliance, continueBtn, grayBox, autoTele, sameScouter, backbtn, testBtn, note1, note2, note3, note4, note5, note6, note7, note8;
     Switch robotError;
-    TextView ampTxt, speakerTxt, trapTxt, allianceTxt, infoDisplay, endgameTxt, roboTxt, roberTxt, speaktxt, amptxt, note1txt, note2txt, note3txt, note4txt, note5txt, note6txt, note7txt, note8txt;
+    TextView ampTxt, speakerTxt, feedTxt, allianceTxt, infoDisplay, endgameTxt, roboTxt, roberTxt, speaktxt, amptxt, note1txt, note2txt, note3txt, note4txt, note5txt, note6txt, note7txt, note8txt;
     EditText nameInput, matchNumber, teamNumber, notes;
     CheckBox autofillTeam;
     ImageView rrLogo, spike;
     int teleAmp;
     int teleSpeaker;
-    int teleTrap;
+    int telefeed;
     int autoAmp;
     int autoSpeaker;
     int tabletnumber;
@@ -71,15 +71,15 @@ public class MainActivity extends AppCompatActivity {
     int note7_order = 0;
     int note8_order = 0;
     int seconds = 0;
-    String note1_val = "no";
-    String note2_val = "no";
-    String note3_val = "no";
-    String note4_val = "no";
-    String note5_val = "no";
-    String note6_val = "no";
-    String note7_val = "no";
-    String note8_val = "no";
-    String preload_val = "no";
+    String note1_val = "null";
+    String note2_val = "null";
+    String note3_val = "null";
+    String note4_val = "null";
+    String note5_val = "null";
+    String note6_val = "null";
+    String note7_val = "null";
+    String note8_val = "null";
+    String preload_val = "null";
     String team = "";
     String alliance = "none";
     String tabletName;
@@ -105,14 +105,13 @@ public class MainActivity extends AppCompatActivity {
         ampMinus = findViewById(R.id.ampMinus);
         speakerPlus = findViewById(R.id.speakerPlus);
         speakerMinus = findViewById(R.id.speakerMinus);
-        trapPlus = findViewById(R.id.feedPlus);
-        trapMinus = findViewById(R.id.feedMinus);
+        feedPlus = findViewById(R.id.feedPlus);
+        feedMinus = findViewById(R.id.feedMinus);
         submit = findViewById(R.id.submit);
         endGame = findViewById(R.id.endGame);
         ampTxt = findViewById(R.id.ampValue);
         speakerTxt = findViewById(R.id.speakerValue);
-        trapTxt = findViewById(R.id.feederScore);
-
+        feedTxt = findViewById(R.id.feederScore);
         notesBox = findViewById(R.id.notesBox);
         notesSubmit = findViewById(R.id.noteSubmit);
         nameInput = findViewById(R.id.nameInput);
@@ -299,10 +298,10 @@ public class MainActivity extends AppCompatActivity {
                 infoDisplay.setText("Team #: " + teamNumber.getText()+ ", Match #: " + matchNumber.getText());
                 autoTele.setText("Auto");
                 autoTele.setText("Auto");
-                trapTxt.setText("Notes Brought to alliance: " + teleTrap);
+                feedTxt.setText("Notes fed: " + telefeed);
                 team = teamNumber.getText().toString();
                 ampTxt.setText("amp: 0");
-                speaktxt.setText("speaker: 0");
+                speakerTxt.setText("speaker: 0");
                 teleLayout.setVisibility(View.INVISIBLE);
                 autoPaths.setVisibility(View.VISIBLE);
 
@@ -316,8 +315,8 @@ public class MainActivity extends AppCompatActivity {
                     ampPlus.setBackgroundColor(Color.argb(127, 255, 215, 0));
                     speakerMinus.setBackgroundColor(Color.argb(127, 255, 215, 0));
                     speakerPlus.setBackgroundColor(Color.argb(127, 255, 215, 0));
-                    trapMinus.setBackgroundColor(Color.argb(127, 255, 215, 0));
-                    trapPlus.setBackgroundColor(Color.argb(127, 255, 215, 0));
+                    feedMinus.setBackgroundColor(Color.argb(127, 255, 215, 0));
+                    feedPlus.setBackgroundColor(Color.argb(127, 255, 215, 0));
                     submit.setBackgroundColor(Color.argb(127, 255, 215, 0));
                 }
 
@@ -353,8 +352,8 @@ public class MainActivity extends AppCompatActivity {
                     ampPlus.setBackgroundColor(Color.argb(new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256)));
                     speakerPlus.setBackgroundColor(Color.argb(new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256)));
                     speakerMinus.setBackgroundColor(Color.argb(new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256)));
-                    trapMinus.setBackgroundColor(Color.argb(new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256)));
-                    trapPlus.setBackgroundColor(Color.argb(new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256)));
+                    feedMinus.setBackgroundColor(Color.argb(new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256)));
+                    feedPlus.setBackgroundColor(Color.argb(new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256)));
                     submit.setBackgroundColor(Color.argb(new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256)));
                     autoTele.setBackgroundColor(Color.argb(new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256), new Random().nextInt(256)));
                 }
@@ -363,8 +362,8 @@ public class MainActivity extends AppCompatActivity {
                     ampPlus.setBackgroundColor(Color.argb(255, 156, 39, 176));
                     speakerPlus.setBackgroundColor(Color.argb(255, 156, 39, 176));
                     speakerMinus.setBackgroundColor(Color.argb(255, 156, 39, 176));
-                    trapMinus.setBackgroundColor(Color.argb(255, 156, 39, 176));
-                    trapPlus.setBackgroundColor(Color.argb(255, 156, 39, 176));
+                    feedMinus.setBackgroundColor(Color.argb(255, 156, 39, 176));
+                    feedPlus.setBackgroundColor(Color.argb(255, 156, 39, 176));
                     submit.setBackgroundColor(Color.argb(255, 156, 39, 176));
                     autoTele.setBackgroundColor(Color.argb(255, 156, 39, 176));
                 }
@@ -534,24 +533,9 @@ public class MainActivity extends AppCompatActivity {
 
         //TELEOP
         speakerPlus.setOnClickListener(v -> {
-            if (autoTele.getText() == "Teleop" && teleSpeaker <= 40) {
+            if (autoTele.getText() == "Teleop") {
                 teleSpeaker += 1;
                 speakerTxt.setText("speaker: " + teleSpeaker);
-            } else {
-                autoSpeaker += 1;
-                speakerTxt.setText("(Auto) speaker: " + autoSpeaker);
-                if (autoSpeaker >= 9) {
-                    builder.setMessage("Are you supposed to be in auto, that's a lot of points?")
-                            .setPositiveButton("Yes", areyousureurinautospeaker)
-                            .setNegativeButton("No", areyousureurinautospeaker)
-                            .show();
-                }
-                if (autoSpeaker > 3 && autoAmp > 3) {
-                    builder.setMessage("Are you supposed to be in auto, they scored more than 3 amp and more than 3 speaker?")
-                            .setPositiveButton("Yes", areyousureurinauto3and3)
-                            .setNegativeButton("No", areyousureurinauto3and3)
-                            .show();
-                }
             }
         });
 
@@ -573,24 +557,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         ampPlus.setOnClickListener(v -> {
-            if (autoTele.getText() == "Teleop" && teleAmp <= 40) {
+            if (autoTele.getText() == "Teleop") {
                 teleAmp += 1;
                 ampTxt.setText("amp: " + teleAmp);
-            } else {
-                autoAmp += 1;
-                ampTxt.setText("(Auto) amp: " + autoAmp);
-                if (autoAmp >= 5) {
-                    builder.setMessage("Are you supposed to be in auto, that's a lot of points?")
-                            .setPositiveButton("Yes", areyousureurinautoamp)
-                            .setNegativeButton("No", areyousureurinautoamp)
-                            .show();
-                }
-                if (autoSpeaker > 3 && autoAmp > 3) {
-                    builder.setMessage("Are you supposed to be in auto, they scored more than 3 amp and more than 3 speaker?")
-                            .setPositiveButton("Yes", areyousureurinauto3and3)
-                            .setNegativeButton("No", areyousureurinauto3and3)
-                            .show();
-                }
             }
         });
 
@@ -608,31 +577,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        trapPlus.setOnClickListener(v -> {
-                teleTrap += 1;
-            trapTxt.setText("Notes Brought to alliance: " + teleTrap);
+        feedPlus.setOnClickListener(v -> {
+                telefeed += 1;
+            feedTxt.setText("Notes fed: " + telefeed);
         });
 
-        trapMinus.setOnClickListener(v -> {
-            if (teleTrap > 0) {
-                teleTrap -= 1;
+        feedMinus.setOnClickListener(v -> {
+            if (telefeed > 0) {
+                telefeed -= 1;
             }
-            trapTxt.setText("Notes Brought to alliance: " + teleTrap);
+            feedTxt.setText("Notes fed: " + telefeed);
         });
 
-        //LISTPLEASEWORK I  A M   B E G G I N G   Y O U
 
         note1.setOnClickListener(v -> {
-            if (note1_val == "no") {
-                note1_val = "make";
+            if (note1_val == "null") {
+                note1_val = "Make";
                 note1.setBackgroundColor(Color.GREEN);
+                autoSpeaker += 1;
                 totalOrder += 1;
                 note1_order = totalOrder;
-            } else if (note1_val == "make") {
-                note1_val = "fail";
+            } else if (note1_val == "Make") {
+                autoSpeaker -= 1;
+                note1_val = "Miss";
                 note1.setBackgroundColor(Color.RED);
             } else {
-                note1_val = "no";
+                note1_val = "null";
                 note1.setBackgroundColor(Color.LTGRAY);
                 totalOrder -= 1;
                 idiotchecker(note1_order);
@@ -642,16 +612,18 @@ public class MainActivity extends AppCompatActivity {
         });
 
         note2.setOnClickListener(v -> {
-            if (note2_val == "no") {
-                note2_val = "make";
+            if (note2_val == "null") {
+                note2_val = "Make";
                 note2.setBackgroundColor(Color.GREEN);
                 totalOrder += 1;
                 note2_order = totalOrder;
-            } else if (note2_val == "make") {
-                note2_val = "fail";
+                autoSpeaker += 1;
+            } else if (note2_val == "Make") {
+                autoSpeaker -= 1;
+                note2_val = "Miss";
                 note2.setBackgroundColor(Color.RED);
             } else {
-                note2_val = "no";
+                note2_val = "null";
                 note2.setBackgroundColor(Color.LTGRAY);
                 totalOrder -= 1;
                 idiotchecker(note2_order);
@@ -661,16 +633,18 @@ public class MainActivity extends AppCompatActivity {
         });
 
         note3.setOnClickListener(v -> {
-            if (note3_val == "no") {
-                note3_val = "make";
+            if (note3_val == "null") {
+                note3_val = "Make";
                 note3.setBackgroundColor(Color.GREEN);
                 totalOrder += 1;
                 note3_order = totalOrder;
-            } else if (note3_val == "make") {
-                note3_val = "fail";
+                autoSpeaker += 1;
+            } else if (note3_val == "Make") {
+                autoSpeaker -= 1;
+                note3_val = "Miss";
                 note3.setBackgroundColor(Color.RED);
             } else {
-                note3_val = "no";
+                note3_val = "null";
                 note3.setBackgroundColor(Color.LTGRAY);
                 totalOrder -= 1;
                 idiotchecker(note3_order);
@@ -680,16 +654,18 @@ public class MainActivity extends AppCompatActivity {
         });
 
         note4.setOnClickListener(v -> {
-            if (note4_val == "no") {
-                note4_val = "make";
+            if (note4_val == "null") {
+                note4_val = "Make";
                 note4.setBackgroundColor(Color.GREEN);
                 totalOrder += 1;
+                autoSpeaker += 1;
                 note4_order = totalOrder;
-            } else if (note4_val == "make") {
-                note4_val = "fail";
+            } else if (note4_val == "Make") {
+                autoSpeaker -= 1;
+                note4_val = "Miss";
                 note4.setBackgroundColor(Color.RED);
             } else {
-                note4_val = "no";
+                note4_val = "null";
                 note4.setBackgroundColor(Color.LTGRAY);
                 totalOrder -= 1;
                 idiotchecker(note4_order);
@@ -699,16 +675,18 @@ public class MainActivity extends AppCompatActivity {
         });
 
         note5.setOnClickListener(v -> {
-            if (note5_val == "no") {
-                note5_val = "make";
+            if (note5_val == "null") {
+                note5_val = "Make";
                 note5.setBackgroundColor(Color.GREEN);
                 totalOrder += 1;
                 note5_order = totalOrder;
-            } else if (note5_val == "make") {
-                note5_val = "fail";
+                autoSpeaker += 1;
+            } else if (note5_val == "Make") {
+                autoSpeaker -= 1;
+                note5_val = "Miss";
                 note5.setBackgroundColor(Color.RED);
             } else {
-                note5_val = "no";
+                note5_val = "null";
                 note5.setBackgroundColor(Color.LTGRAY);
                 totalOrder -= 1;
                 idiotchecker(note5_order);
@@ -718,16 +696,18 @@ public class MainActivity extends AppCompatActivity {
         });
 
         note6.setOnClickListener(v -> {
-            if (note6_val == "no") {
-                note6_val = "make";
+            if (note6_val == "null") {
+                note6_val = "Make";
                 note6.setBackgroundColor(Color.GREEN);
                 totalOrder += 1;
                 note6_order = totalOrder;
-            } else if (note6_val == "make") {
-                note6_val = "fail";
+                autoSpeaker += 1;
+            } else if (note6_val == "Make") {
+                autoSpeaker -= 1;
+                note6_val = "Miss";
                 note6.setBackgroundColor(Color.RED);
             } else {
-                note6_val = "no";
+                note6_val = "null";
                 note6.setBackgroundColor(Color.LTGRAY);
                 totalOrder -= 1;
                 idiotchecker(note6_order);
@@ -737,16 +717,18 @@ public class MainActivity extends AppCompatActivity {
         });
 
         note7.setOnClickListener(v -> {
-            if (note7_val == "no") {
-                note7_val = "make";
+            if (note7_val == "null") {
+                note7_val = "Make";
                 note7.setBackgroundColor(Color.GREEN);
                 totalOrder += 1;
                 note7_order = totalOrder;
-            } else if (note7_val == "make") {
-                note7_val = "fail";
+                autoSpeaker += 1;
+            } else if (note7_val == "Make") {
+                autoSpeaker -= 1;
+                note7_val = "Miss";
                 note7.setBackgroundColor(Color.RED);
             } else {
-                note7_val = "no";
+                note7_val = "null";
                 note7.setBackgroundColor(Color.LTGRAY);
                 totalOrder -= 1;
                 idiotchecker(note7_order);
@@ -756,16 +738,18 @@ public class MainActivity extends AppCompatActivity {
         });
 
         note8.setOnClickListener(v -> {
-            if (note8_val == "no") {
-                note8_val = "make";
+            if (note8_val == "null") {
+                note8_val = "Make";
                 note8.setBackgroundColor(Color.GREEN);
                 totalOrder += 1;
                 note8_order = totalOrder;
-            } else if (note8_val == "make") {
-                note8_val = "fail";
+                autoSpeaker += 1;
+            } else if (note8_val == "Make") {
+                autoSpeaker -= 1;
+                note8_val = "Miss";
                 note8.setBackgroundColor(Color.RED);
             } else {
-                note8_val = "no";
+                note8_val = "null";
                 note8.setBackgroundColor(Color.LTGRAY);
                 totalOrder -= 1;
                 idiotchecker(note8_order);
@@ -775,14 +759,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
         preload.setOnClickListener(v -> {
-            if (preload_val == "no") {
-                preload_val = "make";
+            if (preload_val == "null") {
+                preload_val = "Make";
                 preload.setBackgroundColor(Color.GREEN);
-            } else if (preload_val == "make") {
-                preload_val = "fail";
+                autoSpeaker += 1;
+            } else if (preload_val == "Make") {
+                autoSpeaker -= 1;
+                preload_val = "Miss";
                 preload.setBackgroundColor(Color.RED);
             } else {
-                preload_val = "no";
+                preload_val = "null";
                 preload.setBackgroundColor(Color.LTGRAY);
             }
         });
@@ -895,33 +881,33 @@ public class MainActivity extends AppCompatActivity {
                     myOutWriter.println("teleTrap: " + trapScore.getSelectedItem().toString());
                     myOutWriter.println("climb: " + endGame.getSelectedItem());
 
-                    myOutWriter.println("feeded: " + teleTrap);
+                    myOutWriter.println("teleFeeds: " + telefeed);
 
-                    myOutWriter.println("noteClose1: " + note1_val);
-                    myOutWriter.println("noteClose1Order: " + note1_order);
+                    myOutWriter.println("autoClose1: " + note1_val);
+                    myOutWriter.println("autoClose1Order: " + note1_order);
 
-                    myOutWriter.println("noteClose2: " + note2_val);
-                    myOutWriter.println("noteClose2Order: " + note2_order);
+                    myOutWriter.println("autoClose2: " + note2_val);
+                    myOutWriter.println("autoClose2Order: " + note2_order);
 
-                    myOutWriter.println("noteClose3: " + note3_val);
-                    myOutWriter.println("noteClose3Order: " + note3_order);
+                    myOutWriter.println("autoClose3: " + note3_val);
+                    myOutWriter.println("autoClose3Order: " + note3_order);
 
-                    myOutWriter.println("noteCenter1: " + note4_val);
-                    myOutWriter.println("noteCenter1Order: " + note4_order);
+                    myOutWriter.println("autoCenter1: " + note4_val);
+                    myOutWriter.println("autoCenter1Order: " + note4_order);
 
-                    myOutWriter.println("noteCenter2: " + note5_val);
-                    myOutWriter.println("noteCenter2Order: " + note5_order);
+                    myOutWriter.println("autoCenter2: " + note5_val);
+                    myOutWriter.println("autoCenter2Order: " + note5_order);
 
-                    myOutWriter.println("noteCenter3: " + note6_val);
-                    myOutWriter.println("noteCenter3Order: " + note6_order);
+                    myOutWriter.println("autoCenter3: " + note6_val);
+                    myOutWriter.println("autoCenter3Order: " + note6_order);
 
-                    myOutWriter.println("noteCenter4: " + note7_val);
-                    myOutWriter.println("noteCenter4Order: " + note7_order);
+                    myOutWriter.println("autoCenter4: " + note7_val);
+                    myOutWriter.println("autoCenter4Order: " + note7_order);
 
-                    myOutWriter.println("noteCenter5: " + note8_val);
-                    myOutWriter.println("noteCenter5Order: " + note8_order);
+                    myOutWriter.println("autoCenter5: " + note8_val);
+                    myOutWriter.println("autoCenter5Order: " + note8_order);
 
-                    myOutWriter.println("preload: " + preload_val);
+                    myOutWriter.println("autoPreload: " + preload_val);
 
                     myOutWriter.println("Comment: " + notes.getText());
 
@@ -1055,7 +1041,7 @@ public class MainActivity extends AppCompatActivity {
         notesBox.setVisibility(View.INVISIBLE);
         notesSubmit.setVisibility(View.INVISIBLE);
         roberTxt.setVisibility(View.INVISIBLE);
-        teleTrap = 0;
+        telefeed = 0;
         teleAmp = 0;
         teleSpeaker = 0;
         autoAmp = 0;
@@ -1065,33 +1051,34 @@ public class MainActivity extends AppCompatActivity {
         totalOrder = 0;
 
         note1_order = 0;
-        note1_val = "no";
+        note1_val = "null";
         note1.setBackgroundColor(Color.LTGRAY);
         note2_order = 0;
-        note2_val = "no";
+        note2_val = "null";
         note2.setBackgroundColor(Color.LTGRAY);
         note3_order = 0;
-        note3_val = "no";
+        note3_val = "null";
         note3.setBackgroundColor(Color.LTGRAY);
         note4_order = 0;
-        note4_val = "no";
+        note4_val = "null";
         note4.setBackgroundColor(Color.LTGRAY);
         note5_order = 0;
-        note5_val = "no";
+        note5_val = "null";
         note5.setBackgroundColor(Color.LTGRAY);
         note6_order = 0;
-        note6_val = "no";
+        note6_val = "null";
         note6.setBackgroundColor(Color.LTGRAY);
         note7_order = 0;
-        note7_val = "no";
+        note7_val = "null";
         note7.setBackgroundColor(Color.LTGRAY);
         note8_order = 0;
-        note8_val = "no";
+        note8_val = "null";
         note8.setBackgroundColor(Color.LTGRAY);
 
-        preload_val = "no";
+        preload_val = "null";
         preload.setBackgroundColor(Color.LTGRAY);
 
+        updatenotes();
 
         if (roundfill > 1) {
             sameScouter.setVisibility(View.VISIBLE);
