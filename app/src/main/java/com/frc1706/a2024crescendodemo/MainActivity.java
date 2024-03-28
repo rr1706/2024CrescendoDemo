@@ -86,7 +86,98 @@ public class MainActivity extends AppCompatActivity {
     String scouterName;
     Boolean countDown;
     Boolean autoclicked = false;
-
+    String teamArray = "8719,3397,1288,3814,9428,2978\n" +
+            "1732,1178,4766,2531,4522,3284\n" +
+            "6391,2408,7417,5176,6237,7452\n" +
+            "1756,4187,1329,5045,7117,4256\n" +
+            "9031,1706,4931,3843,2783,5147\n" +
+            "1939,931,5060,7472,9401,5583\n" +
+            "4329,7662,8069,3937,8077,7496\n" +
+            "6391,4330,6817,8719,1208,6744\n" +
+            "4766,7417,1329,1178,1288,9428\n" +
+            "6237,5147,3814,2531,2783,4187\n" +
+            "5045,3284,5583,1939,2978,5176\n" +
+            "7452,4931,7117,3937,931,8069\n" +
+            "4330,4329,4522,3843,6817,3397\n" +
+            "5060,7662,1756,9031,1732,9401\n" +
+            "7496,6744,2408,1706,7472,4256\n" +
+            "2531,2978,8077,1208,6391,5176\n" +
+            "1939,5045,1178,2783,7117,1288\n" +
+            "6237,4931,4329,4522,3397,5583\n" +
+            "6817,3814,9031,7417,5147,3937\n" +
+            "4187,8069,8719,1706,5060,9401\n" +
+            "2408,1208,9428,6744,1329,7662\n" +
+            "7472,7496,3843,1756,8077,1732\n" +
+            "4256,3284,4766,931,4330,7452\n" +
+            "1288,7417,5176,3937,4931,2783\n" +
+            "9031,4329,2978,1178,6391,7117\n" +
+            "8069,9428,2531,5583,6744,4187\n" +
+            "6237,5060,1208,1756,1706,5045\n" +
+            "7472,1732,4330,4766,7452,3814\n" +
+            "1329,7496,3284,8077,6817,9401\n" +
+            "4522,4256,5147,7662,1939,3397\n" +
+            "7117,3843,2408,8719,931,9428\n" +
+            "4931,8069,5583,6744,1756,1178\n" +
+            "5060,2531,7472,4330,7417,1706\n" +
+            "4187,3814,6391,9401,3937,3284\n" +
+            "3397,8077,5147,7496,5176,5045\n" +
+            "6817,4766,931,2783,7662,2408\n" +
+            "4256,1732,6237,4329,1288,1208\n" +
+            "1939,8719,4522,1329,9031,3843\n" +
+            "7452,5583,1706,7117,4187,2978\n" +
+            "5147,1756,4330,3284,6391,6744\n" +
+            "7496,3397,1178,5176,3814,7662\n" +
+            "7472,3937,1208,9428,9401,4931\n" +
+            "9031,2531,8719,5045,4766,4329\n" +
+            "6817,2978,7417,3843,6237,1288\n" +
+            "8069,1939,1732,2408,4256,931\n" +
+            "8077,2783,5060,1329,7452,4522\n" +
+            "9428,5583,3937,5147,1208,3284\n" +
+            "7662,9031,4187,6391,4329,2531\n" +
+            "9401,3843,4330,2978,6237,1178\n" +
+            "8719,7117,1732,4931,1939,4256\n" +
+            "4522,7496,1288,5060,7452,2408\n" +
+            "3397,5045,7472,8069,6817,2783\n" +
+            "7417,6744,931,8077,1329,3814\n" +
+            "1756,5176,3937,4766,1706,3843\n" +
+            "7117,2531,7662,1732,4931,2978\n" +
+            "9428,4256,7452,1178,5147,9031\n" +
+            "2783,8719,6391,5583,5060,7496\n" +
+            "6817,1329,1939,4330,8069,6237\n" +
+            "3814,9401,5045,4522,2408,1706\n" +
+            "1288,1756,931,5176,4329,6744\n" +
+            "3397,4187,4766,1208,7417,8077\n" +
+            "7662,5147,7472,3284,1178,8719\n" +
+            "2978,5583,2783,3937,4256,4330\n" +
+            "7117,9428,1706,2531,6817,6237\n" +
+            "931,3843,4329,3814,5060,8069\n" +
+            "9401,6744,1939,7417,7452,3397\n" +
+            "4931,5045,1208,7496,4766,6391\n" +
+            "2408,1288,8077,3284,9031,1756\n" +
+            "1329,7472,5176,4187,1732,4522\n" +
+            "1706,8719,6817,1178,5583,7662\n" +
+            "5060,3937,7117,6744,2531,3397\n" +
+            "3814,1208,4256,7417,5045,3843\n" +
+            "7452,2783,4329,9401,2408,1756\n" +
+            "8077,4766,4931,6237,3284,1939\n" +
+            "1288,2978,1329,6391,7472,8069\n" +
+            "4187,4330,7496,931,4522,9031\n"+
+            "1732,5176,5060,5147,9428,6817\n" +
+            "2408,1178,2531,1208,3397,1756\n" +
+            "1706,3814,3937,5583,8077,1939\n" +
+            "3843,3284,7452,4329,1329,8719\n" +
+            "5045,1288,4187,7662,4330,4931\n" +
+            "8069,7496,9401,5147,7117,4766\n" +
+            "2783,4522,7417,1732,6391,9428\n" +
+            "6744,6237,9031,2978,931,7472\n" +
+            "5176,1178,8077,4256,8719,5060\n" +
+            "7452,7662,5045,5583,3843,3814\n" +
+            "4330,2408,1329,4931,4187,5147\n" +
+            "9428,1939,7417,4329,1756,7496\n" +
+            "3397,9031,6391,931,1706,1732\n" +
+            "3284,5176,2783,1208,8069,7117\n" +
+            "4256,9401,2531,1288,7472,6817\n" +
+            "2978,3937,6744,4766,4522,6237\n";
 
 
     ConstraintLayout notesBox, preMenu, background, autoPaths, teleLayout;
@@ -173,27 +264,28 @@ public class MainActivity extends AppCompatActivity {
         tabletName = Settings.Secure.getString(getContentResolver(), "bluetooth_name");
 
         switch (tabletName) {
-            case "1706's 1st Fire":
+            case "1706's Blue 1":
+
                 tabletnumber = 4;
                 selectedTabNum.setSelection(3);
                 break;
-            case "1706's 2nd Fire":
+            case "1706's Blue 2":
                 tabletnumber = 5;
                 selectedTabNum.setSelection(4);
                 break;
-            case "1706's 3rd Fire":
+            case "1706's Blue 3":
                 tabletnumber = 6;
                 selectedTabNum.setSelection(5);
                 break;
-            case "1706's 5th Fire":
+            case "1706's Red 1":
                 tabletnumber = 1;
                 selectedTabNum.setSelection(0);
                 break;
-            case "1706's 6th Fire":
+            case "1706's Red 2":
                 tabletnumber = 2;
                 selectedTabNum.setSelection(1);
                 break;
-            case "1706's 7th Fire":
+            case "1706's Red 3":
                 tabletnumber = 3;
                 selectedTabNum.setSelection(2);
                 break;
@@ -218,6 +310,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(this, "No item selected", Toast.LENGTH_SHORT).show();
             }
+            update.setText(Settings.Secure.getString(getContentResolver(), "bluetooth_name"));
             teamAuto();
         });
 
@@ -471,7 +564,7 @@ public class MainActivity extends AppCompatActivity {
         nameInput.setOnFocusChangeListener((v, hasFocus) -> {
             if (!hasFocus) {
                 hideKeyboard(v);
-                if (nameInput.getText().toString().equals("admin1706")) {
+                if (nameInput.getText().toString().equals("1706admin")) {
                     selectedTabNum.setVisibility(View.VISIBLE);
                     update.setVisibility(View.VISIBLE);
                 } else {
@@ -955,6 +1048,7 @@ public class MainActivity extends AppCompatActivity {
 
         } catch (IOException e) {
             e.printStackTrace();
+            //text.append(teamArray).append("\n");
         }
         Log.e("log", text.toString());
         return text.toString();
@@ -970,12 +1064,11 @@ public class MainActivity extends AppCompatActivity {
             try {
                 splittempIntArr = tempIntArr[roundfill - 1].split(",");
                 teamNumber.setText(splittempIntArr[tabletnumbercomp]);
-                Toast.makeText(this, splittempIntArr[tabletnumbercomp], Toast.LENGTH_SHORT).show();
-
             } catch (ArrayIndexOutOfBoundsException e) {
                 e.printStackTrace();
             }
         }
+
     }
 
     private void runtimer() {
